@@ -22,7 +22,7 @@ void setupSerial()
 } //setupSerial()
 
 /**
- * Standard Arduino initialization routine.
+ * Standard Arduino initialization routine. test
  ******************************************************************************/
 void setup() 
 {

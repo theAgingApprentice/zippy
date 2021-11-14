@@ -21,7 +21,7 @@
 #include <ArduinoLog.h> // https://github.com/thijse/Arduino-Log.
 #include <Adafruit_GFX.h> // OLED graphics
 #include <Adafruit_SH110X.h> // OLED text
-#include <hexbot_gpio_pins.h> // GPIO pin uses
+#include <zippy_gpio_pins.h> // GPIO pin uses
 
 /*******************************************************************************
  * @section mainVars Global variable definitions.
@@ -29,7 +29,7 @@
  * compiler errors list a function from any of the include files here. 
  *******************************************************************************/
 // Config related variables
-const char* HOST_NAME_PREFIX = "Hexbot"; // Prefix for our unique network name.
+const char* HOST_NAME_PREFIX = "Zippy"; // Prefix for our unique network name.
 aaChip appCpu; // Access information about the ESP32 application microprocessor (Core1).
 aaNetwork network(HOST_NAME_PREFIX); // WiFi session management.
 bool networkConnected = false;
@@ -169,11 +169,8 @@ aaWebService localWebService(WEB_APP_TITLE); // Webserver hosted by microcontrol
  * @details In order to get rid of "error: 'xxx' was not declared in this scope"
  * compiler errors list a function from any of the include files here. 
  ************************************************************************************/
-void rotateDisplay(int8_t); 
-void displaySplashScreen(String);
-// Config ralted functions
+// Config related functions
 void showCfgDetails();
-void displayCfgDetails(int8_t);
 void checkBoot();
 // MQTT related functions
 bool connectToMqttBroker(aaNetwork &);
@@ -200,17 +197,6 @@ void coordsToAngles(float, float, float, float *, float *, float *);
 void identifyDevice(int);
 void scanBus0();
 void scanBus1();
-// Define OLED related functions.
-void IRAM_ATTR ButtonA_ISR();
-void IRAM_ATTR ButtonB_ISR();
-void IRAM_ATTR ButtonC_ISR();
-void placeTextVHcentre(String, uint8_t, uint16_t);
-void placeTextHcentre(String, uint8_t, uint16_t);
-void rotateDisplay(int8_t);
-void displaySplashScreen(String);
-void displayStatusScreen();
-void checkOledButtons();
-void initOled();
 // Define servoLegs related functions.
 void startPositionLegs(int8_t, int8_t);
 void initServos();
@@ -229,7 +215,7 @@ void startWebServer();
  * declared in one function prior to being referenced by another function. 
  *******************************************************************************/
 #include <huzzah32_gpio_pins.h> // Map pins on Adafruit Huzzah32 dev board to friendly names.
-#include <hexbot_gpio_pins.h> // Map Hexbot specific pin naming to generic development board pin names. 
+#include <zippy_gpio_pins.h> // Map Zippy specific pin naming to generic development board pin names. 
 #include <terminal.cpp> // Serial port management.
 #include <configDetails.cpp> // Show the environment details of this application.
 #include <web.cpp> // Manage locally hosted web service. 
@@ -237,10 +223,6 @@ void startWebServer();
 #include <network.cpp> // Control networking activities.
 #include <mqttBroker.cpp> // Establish connect to the the MQTT broker.
 #include <i2c.cpp> // Scan I2C buses to see what devices are present.
-#include <ikLibrary.cpp> // InverseK.h inverted kinematic functions.
-#include <servoLegs.cpp> // Control leg servos.
-#include <oled.cpp> // Control OLED.
-#include <daeIK.cpp> // Doug's inverted kinetics functions. 
 
 /************************************************************************************
  * @section mainDeclare Declare functions in main.cpp.

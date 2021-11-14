@@ -241,22 +241,6 @@ bool processCmd(String payload)
          return false;
       } // else       
    } // if
-   // ROTATE_OLED command.
-   if(cmd == "ROTATE_OLED")
-   {   
-      const int8_t numArgumentsRequired = 1; // How many arguments expected?
-      if(checkNumArg(numArgumentsRequired, argN, &arg[0]))
-      {
-         int8_t tmp = convertStrToInt8_t(arg[1]);
-         rotateDisplay(tmp);
-         displaySplashScreen("");
-         return true;
-      } // if
-      else
-      {
-         return false;
-      } // else       
-   } // if
    Log.warningln("<processCmd> Warning - unrecognized command."); 
    return false;
 } // processCmd()

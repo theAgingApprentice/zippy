@@ -189,16 +189,16 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>_HOST_NAME_PR
 </ul>
 <p >The second bus is used for accessing Data Memory (DRAM). DRAM handles Block Started by Symbol (BSS) aka the stack, data aka static data and heap aka the heap. The Memory Mapping Unit (MMU) takes the total SRAM and maps it to distinct address locations. These locations are called Static Data, the Heap and the Stack.</p>
 <p >The ESP32 chip's architecture consists of five subsystems.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md76"></a>
 The Core subsystem</h1>
 <p >The ESP32_WROOM_32E core subsystem is comprised of two CPU(s), RAM and ROM.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 The Core CPUs</h2>
 <p >The CPUs are Xtensa 32-bit LX6 microprocessors known as core 0 and core 1. Core0 is used for RF communication. The Arduino binary runs on core 1 by default though you can pin threads to core 0 in order to run code there.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md78"></a>
 The Core memory</h2>
 <p >The Core memory comes as both ROM (Read Only Memory) and SRAM (Static Random Access Memory). The ROM contains espressif magic and we cannot play with that so instead we focus on the SRAM.</p>
-<h3><a class="anchor" id="autotoc_md7"></a>
+<h3><a class="anchor" id="autotoc_md79"></a>
 SRAM</h3>
 <p >The internal Core RAM is divided into three memory blocks called SRAM0 (192KB), SRAM1 (128 KB) and SRAM2 (200 KB). SRAM0 and SRAM1 can be used as a contiguous IRAM whereas SRAM1 and SRAM2 can be used as a contiguous DRAM address space. While SRAM1 can be used as both IRAM and DRAM, for practical purposes the Espressif IoT Development Framework (ESP-IDF) uses SRAM1 as DRAM, as it’s generally the data memory that applications fall short of.</p>
 <p >The 192 KB of available IRAM in ESP32 is used for code execution, as well as part of it is used as a cache memory for flash (and PSRAM) access.</p>
@@ -230,7 +230,7 @@ SRAM</h3>
 <div class="line"><span class="keyword">this</span> happens, one or both of these memory areas will be corrupted with </div>
 <div class="line">unpredictable results. In some cases it will cause an immediate crash. In </div>
 <div class="line">others, the effects of the corruption may not be noticed until much later.</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md80"></a>
 The Wireless subsystem</h1>
 <p >The Wireless subsystem is comprised of WiFi and Bluetooth which share the following common components:</p>
 <ol type="1">
@@ -242,7 +242,7 @@ The Wireless subsystem</h1>
 </li>
 </ol>
 <p >The WiFi standards supported are 802.11 b/g/n/e/i (802.11n @ 2.4 GHz up to 150 Mbit/s). The Bluetooth standards supported is v4.2 BR/EDR and Bluetooth Low Energy (BLE).</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md81"></a>
 The RTC</h2>
 <p >The Real Time Clock (RTC) is comprised of three things:</p><ol type="1">
 <li>The Phasor measurement unit (PMU),</li>
@@ -252,16 +252,16 @@ The RTC</h2>
 <p >The Real Time Clock (RTC) is a minimally viable very low power system that remains active even when the ESP32 is in hybernation or standby mode. It is comprised of a Phasor Measurement Unit (PMU), a small ultra low power (ULP) 32-bit co-processor, and 8Kbs of RAM memory known as the recovery memory. <br  />
 </p>
 <p >RTC is able to access some SRAM as well as some GPIO pins (the ones with capacitive touch capabilities) even when the chip is in non active modes.</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md82"></a>
 The ULP coprocessor</h3>
 <p >The Ultra Low Power (ULP) coprocessor is a simple Finite State Machine (FSM) which is designed to perform measurements using the ADC, temperature sensor, and external I2C sensors, while the main processors are in deep sleep mode. The ULP coprocessor can access the RTC_SLOW_MEM memory region, and registers in RTC_CNTL, RTC_IO, and SARADC peripherals. The ULP coprocessor uses fixed-width 32-bit instructions, 32-bit memory addressing, and has 4 general-purpose 16-bit registers.</p>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md83"></a>
 Recovery memory</h3>
 <p >The RTC memory is 8Kbs of RAM known as the recovery memory. The recovery RAM is area of SRAM which remains powered and accessible to the RTC functions of the ESP32 microcontroller and the ULP coprocessor even when standby is activated.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md84"></a>
 The PMU</h3>
 <p >The Phasor measurement unit (PMU) monitors for system events which will wake up the ESP32 when required.</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md85"></a>
 The Crytographic Acceleration subsystem</h1>
 <p >The crytographic hardware acceleration subsystem supports four hardware acceleration algorithms:</p><ol type="1">
 <li>SHA,</li>
@@ -270,17 +270,17 @@ The Crytographic Acceleration subsystem</h1>
 <li>RNG. <br  />
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md86"></a>
 The Peripherals subsystem</h1>
 <p >The Peripherals subsystem covers external devices on either the SPI or I2C bus as well as all of the General Purpose Input/Output (GPIO) pins. Off-chip SPI memory can be mapped into the available address space as external memory. Parts of the embedded memory can be used as transparent cache for this external memory.</p>
 <ol type="1">
 <li>Supports up to 16 MB off-Chip SPI Flash.</li>
 <li>Supports up to 8 MB off-Chip SPI SRAM.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md87"></a>
 Off-chip Flash memory</h2>
 <p >Flash memory is used to store your program image and any initialized data. You can execute program code from flash, but you can't modify data in flash memory from your executing code. To modify the data, it must first be copied into SRAM. Flash memory is the same technology used for thumb-drives and SD cards. It is non-volatile, so your program will still be there when the system is powered off. Flash memory has a finite lifetime of about 100,000 write cycles. So if you upload 10 programs a day, every day for the next 27 years, you might wear it out. The Huzzah32 featherboard does not come with any off-chip Flash memory.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md88"></a>
 Off-chip PSRAM memory</h2>
 <p >Off-chip SPI memory can be mapped into the available address space as external memory. Parts of the embedded memory can be used as transparent cache for this external memory. The architecture can supports up to 8 MB off-chip SPI SRAM (PSRAM). The Huzzah32 featherboard does not come with any PSRAM. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -520,21 +520,21 @@ Off-chip PSRAM memory</h2>
 <li>Initialize Bluedroid.</li>
 <li>Enable Bluedroid.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md0"></a>
+<h1><a class="anchor" id="autotoc_md72"></a>
 Esp32 Bluetooth Architecture</h1>
-<p >Bluetooth is a wireless technology standard for exchanging data over short distances, with advantages including robustness, low power consumption and low cost. The Bluetooth system can be divided into two different categories: Classic Bluetooth and Bluetooth Low Energy (BLE). ESP32 supports dual-mode Bluetooth, meaning that both Classic Bluetooth and BLE are supported by ESP32. Basically, the Bluetooth protocol stack is split into two parts: a “controller stack” and a “host stack”. The controller stack contains the PHY, Baseband, Link Controller, Link Manager, Device Manager, HCI and other modules, and is used for the hardware interface management and link management. The host stack contains L2CAP, SMP, SDP, ATT, GATT, GAP and various profiles, and functions as an interface to the application layer, thus facilitating the application layer to access the Bluetooth system. The Bluetooth Host can be implemented on the same device as the Controller, or on different devices. Both approaches are supported by ESP32.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<p >Bluetooth is a wireless technology standard for exchanging data over short distances, with advantages including robustness, low power consumption and low cost. The Bluetooth system can be divided into two different categories: Classic Bluetooth and Bluetooth Low Energy (BLE). ESP32 supports dual-mode Bluetooth, meaning that both Classic Bluetooth and BLE are supported by ESP32. Basically, the Bluetooth protocol stack is split into two parts: a “controller stack” and a “host stack”. The controller stack contains the PHY, Baseband, <a class="el" href="class_link.html">Link</a> Controller, <a class="el" href="class_link.html">Link</a> Manager, Device Manager, HCI and other modules, and is used for the hardware interface management and link management. The host stack contains L2CAP, SMP, SDP, ATT, GATT, GAP and various profiles, and functions as an interface to the application layer, thus facilitating the application layer to access the Bluetooth system. The Bluetooth Host can be implemented on the same device as the Controller, or on different devices. Both approaches are supported by ESP32.</p>
+<h1><a class="anchor" id="autotoc_md73"></a>
 Bluedroid</h1>
 <p >The BLUEDROID Bluetooth Stack communicates with Bluetooth Controller over VHCI (Virtual Host Controller Interface) and at the same time provides APIs for user application. Bluetooth Profiles determine the functions of each layer of the Bluetooth from PHY to L2CAP while the Bluetooth Protocols define message formats and procedures for data transport, link control etc.</p>
 <p >The following is a list of Classic Bluetooth Profiles and Protocols supported by BLUEDROID Bluetooth Stack of ESP32.</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
 Classic Bluetooth Profiles</h2>
 <ol type="1">
 <li>GAP</li>
 <li>A2DP (SNK)</li>
 <li>AVRCP (CT)</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 Classic Bluetooth Protocols</h2>
 <p >L2CAP SDP AVDTP AVCTP</p>
 <p >The communication between ESP32’s Processor and Bluetooth Controller is based on Serial Interface.</p>
@@ -624,7 +624,7 @@ Classic Bluetooth Protocols</h2>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>const char* Service Set IDentifier (SSID). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>const char* Service <a class="el" href="class_set.html">Set</a> IDentifier (SSID). </dd></dl>
 
 </div>
 </div>
@@ -865,7 +865,7 @@ Classic Bluetooth Protocols</h2>
 </div><div class="memdoc">
 
 <p>Configure the SOC. </p>
-<p >Set up the SOC based on the configuration structure passed by reference. <br  />
+<p ><a class="el" href="class_set.html">Set</a> up the SOC based on the configuration structure passed by reference. <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wl_status_t</td><td>wifi connection status code. </td></tr>

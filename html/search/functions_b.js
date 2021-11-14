@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['nocolonmac_0',['noColonMAC',['../classaa_format.html#a0ea33dd911eaf84c599044bc4c9e85d5',1,'aaFormat']]],
-  ['notice_1',['notice',['../class_logging.html#a6350649aea4d88d6398bb6b789d6da40',1,'Logging']]]
+  ['logging_0',['Logging',['../class_logging.html#acc3d848a3d05076fd185cd95e9c648d5',1,'Logging']]],
+  ['logresetreason_1',['logResetReason',['../classaa_esp32_wroom32v3.html#ac76f966b81728478f84e0990e4e4264e',1,'aaEsp32Wroom32v3']]],
+  ['logsubsystemdetails_2',['logSubsystemDetails',['../classaa_esp32_wroom32v3.html#ad59cf3c88f98076773ff10618365b64c',1,'aaEsp32Wroom32v3']]]
 ];

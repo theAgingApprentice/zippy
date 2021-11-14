@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7eaaesp32wroom32v3_0',['~aaEsp32Wroom32v3',['../classaa_esp32_wroom32v3.html#a72942824319ce7fb8ca46a2ea2c05869',1,'aaEsp32Wroom32v3']]],
-  ['_7eaaformat_1',['~aaFormat',['../classaa_format.html#a6fe656805ec4652c69723305d0af3953',1,'aaFormat']]],
-  ['_7eaahardware_2',['~aaHardware',['../classaa_hardware.html#a76a739d1f1d01d9b4c4a2649357026cb',1,'aaHardware']]]
+  ['unsubackpacket_0',['UnsubAckPacket',['../class_async_mqtt_client_internals_1_1_unsub_ack_packet.html',1,'AsyncMqttClientInternals']]],
+  ['unsubscribeoutpacket_1',['UnsubscribeOutPacket',['../class_async_mqtt_client_internals_1_1_unsubscribe_out_packet.html',1,'AsyncMqttClientInternals']]],
+  ['unusable_2',['unusable',['../aa_network-1_80_80_2src_2aa_network_8h.html#a480211344cd5a14a61f361e2ff6c74ccaf565a3dd43b707e28ed128a9d42aef3d',1,'unusable():&#160;aaNetwork.h'],['../aa_web-1_80_80_2lib_2aa_network-main_2src_2aa_network_8h.html#a480211344cd5a14a61f361e2ff6c74ccaf565a3dd43b707e28ed128a9d42aef3d',1,'unusable():&#160;aaNetwork.h']]]
 ];

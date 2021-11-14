@@ -8,7 +8,7 @@ var searchData=
   ['readprescale_5',['readPrescale',['../class_adafruit___p_w_m_servo_driver.html#a52dbe6fa4fa4a98d3082f239d59ad5f1',1,'Adafruit_PWMServoDriver']]],
   ['reset_6',['reset',['../class_adafruit___p_w_m_servo_driver.html#a5f25f9f07525e08b7622c476b4a1f379',1,'Adafruit_PWMServoDriver']]],
   ['retrieve_7',['Retrieve',['../class_retrieve.html',1,'']]],
-  ['rfsignalstrength_8',['rfSignalStrength',['../classaa_network.html#a2939f0d11f02f932b3a1406de14c3876',1,'aaNetwork::rfSignalStrength()'],['../classaa_esp32_wroom32v3.html#a8727de83e1985daa8a14e75fe6acf38c',1,'aaEsp32Wroom32v3::rfSignalStrength()']]],
+  ['rfsignalstrength_8',['rfSignalStrength',['../classaa_network.html#a2939f0d11f02f932b3a1406de14c3876',1,'aaNetwork']]],
   ['rotation_9',['rotation',['../class_adafruit___g_f_x.html#a37a479d28fb11906ce516e983b1af926',1,'Adafruit_GFX']]],
   ['rstpin_10',['rstPin',['../class_adafruit___gray_o_l_e_d.html#a5b8ad07d90e716428259fb6ed22fbd3d',1,'Adafruit_GrayOLED']]]
 ];

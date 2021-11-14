@@ -68,13 +68,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >Calculates the inverse kinematics for a 3 links arm with a rotating base. Tested with Arduino UNO and Teensy 3.6, with the robotic arm Arduino Braccio.</p>
-<h1><a class="anchor" id="autotoc_md495"></a>
+<h1><a class="anchor" id="autotoc_md458"></a>
 How it works?</h1>
 <p ><img src="./img/labels.png" alt="braccio-labels" class="inline"/></p>
 <p >A <code><a class="el" href="class_link.html">Link</a></code> is a straight line from one joint to another. We usually need the length of <code>links</code> to calculate the inverse kinematics. For the braccio robot arm, we have <b>4 links</b>: <code>base</code> that connects <code>a0</code> with <code>a1</code> with a length of 0mm, <code>upperarm</code> that connects <code>a1</code> and <code>a2</code> with a length of 200mm, <code>forearm</code> that connects <code>a2</code> with <code>a3</code> with a length of 200mm, and <code>hand</code> that connects <code>a3</code> with the end effector with a length of 270mm.</p>
 <p >Here, <code>a0</code>, <code>a1</code>, <code>a2</code>, and <code>a3</code> correspond to each servomotor of the arm.</p>
 <p >To simplify calculations, we assume that the origin point starts at <code>a1</code> and <code>a0</code> shares the same point with <code>a1</code> (link length of 0mm).</p>
-<h2><a class="anchor" id="autotoc_md496"></a>
+<h2><a class="anchor" id="autotoc_md459"></a>
 Declaring Links</h2>
 <p >We can setup a link by declaring a variable of type <code><a class="el" href="class_link.html">Link</a></code>:</p>
 <div class="fragment"><div class="line">Link myLink;</div>
@@ -92,12 +92,12 @@ Declaring Links</h2>
 </div><!-- fragment --><p >Here, <code>x</code>, <code>y</code>, and <code>z</code> and defined in <b>mm</b> and follow the system:</p>
 <p ><img src="./img/coordinates.png" alt="coordinates" class="inline"/></p>
 <p >The solver will return <code>TRUE</code> if a solution is found and <code>FALSE</code> if there are no solutions. In case of a <code>FALSE</code> return, the values of <code>a0</code>, <code>a1</code>, <code>a2</code>, and <code>a3</code> are not guaranteed.</p>
-<h2><a class="anchor" id="autotoc_md497"></a>
+<h2><a class="anchor" id="autotoc_md460"></a>
 What is the math behind the solver?</h2>
 <p >This solver basically uses the <b>Rule of Cosines</b> to find the angles that lead to a specific coordinate in space.</p>
 <p ><img src="./img/cos.png" alt="rule-of-cosines" class="inline"/></p>
 <p >To calculate the rotation angle of the base, the cartesian coordinate is transformed to polar coordinates.</p>
-<h1><a class="anchor" id="autotoc_md498"></a>
+<h1><a class="anchor" id="autotoc_md461"></a>
 Practical Example</h1>
 <div class="fragment"><div class="line">// Include the library InverseK.h</div>
 <div class="line">#include &lt;InverseK.h&gt;</div>
@@ -154,7 +154,7 @@ Practical Example</h1>
 <div class="line">float a2b(float a) {</div>
 <div class="line">  return (a + HALF_PI) * 180 / PI;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md499"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md462"></a>
 How to install?</h1>
 <ol type="1">
 <li>Download the project as a .zip file.</li>
@@ -176,7 +176,7 @@ How to install?</h1>
 </ol>
 <p ><b>You can check the example sketch at:</b> <code>File-&gt;Examples-&gt;CGx InverseK-&gt;CGx_InverseK_Example</code></p>
 <p ><b>If you want to control the arm using Gcode, check:</b> <a href="https://github.com/cgxeiji/CGx-Gcode-RobotArm">CGx-Gcode-RobotArm</a></p>
-<h1><a class="anchor" id="autotoc_md500"></a>
+<h1><a class="anchor" id="autotoc_md463"></a>
 Found any issues or questions?</h1>
 <p >Please post a <a href="https://github.com/cgxeiji/CGx-InverseK/issues/new">new issue</a> with your question or suggestion.</p>
 <p >Pull requests are also welcomed. </p>

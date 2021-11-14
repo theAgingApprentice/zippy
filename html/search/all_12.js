@@ -13,7 +13,6 @@ var searchData=
   ['tft_5fsoft_5fspi_10',['TFT_SOFT_SPI',['../_adafruit___s_p_i_t_f_t_8cpp.html#ae77f409b2f898ec05554ea52cf918c23',1,'Adafruit_SPITFT.cpp']]],
   ['tft_5fwr_5fstrobe_11',['TFT_WR_STROBE',['../class_adafruit___s_p_i_t_f_t.html#ab59285824eb5a042a2169edc127b2551',1,'Adafruit_SPITFT']]],
   ['tftbuswidth_12',['tftBusWidth',['../_adafruit___s_p_i_t_f_t_8h.html#a4a7dffd73fe8924b90709aa7e6e366e8',1,'Adafruit_SPITFT.h']]],
-  ['todo_20list_13',['Todo List',['../todo.html',1,'']]],
-  ['trace_14',['trace',['../class_logging.html#afc1945db6f72b34f30a8636fa9ef2440',1,'Logging']]],
-  ['troubleshooting_15',['Troubleshooting',['../md_lib_aa_mqtt_1_0_0_lib_async_mqtt_client_master_docs_5___troubleshooting.html',1,'']]]
+  ['trace_13',['trace',['../class_logging.html#afc1945db6f72b34f30a8636fa9ef2440',1,'Logging']]],
+  ['troubleshooting_14',['Troubleshooting',['../md_lib_aa_mqtt_1_0_0_lib_async_mqtt_client_master_docs_5___troubleshooting.html',1,'']]]
 ];

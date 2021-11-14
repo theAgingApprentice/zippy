@@ -6,5 +6,5 @@ var searchData=
   ['readcommand8_3',['readcommand8',['../class_adafruit___s_p_i_t_f_t.html#a641ccc4f159129259ee08738cb99627b',1,'Adafruit_SPITFT']]],
   ['readprescale_4',['readPrescale',['../class_adafruit___p_w_m_servo_driver.html#a52dbe6fa4fa4a98d3082f239d59ad5f1',1,'Adafruit_PWMServoDriver']]],
   ['reset_5',['reset',['../class_adafruit___p_w_m_servo_driver.html#a5f25f9f07525e08b7622c476b4a1f379',1,'Adafruit_PWMServoDriver']]],
-  ['rfsignalstrength_6',['rfSignalStrength',['../classaa_esp32_wroom32v3.html#a8727de83e1985daa8a14e75fe6acf38c',1,'aaEsp32Wroom32v3::rfSignalStrength()'],['../classaa_network.html#a2939f0d11f02f932b3a1406de14c3876',1,'aaNetwork::rfSignalStrength()']]]
+  ['rfsignalstrength_6',['rfSignalStrength',['../classaa_network.html#a2939f0d11f02f932b3a1406de14c3876',1,'aaNetwork']]]
 ];

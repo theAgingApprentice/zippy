@@ -25,7 +25,7 @@ var searchData=
   ['getshowlevel_22',['getShowLevel',['../class_logging.html#a9a2a46597f8e5f52835f9394458ee597',1,'Logging']]],
   ['gettextbounds_23',['getTextBounds',['../class_adafruit___g_f_x.html#a90983ed41807de26d48bcf588d7c9a19',1,'Adafruit_GFX::getTextBounds(const char *string, int16_t x, int16_t y, int16_t *x1, int16_t *y1, uint16_t *w, uint16_t *h)'],['../class_adafruit___g_f_x.html#a97525abb71dbe38c6551e4d0da4052b8',1,'Adafruit_GFX::getTextBounds(const __FlashStringHelper *s, int16_t x, int16_t y, int16_t *x1, int16_t *y1, uint16_t *w, uint16_t *h)'],['../class_adafruit___g_f_x.html#a4258c8e7e5e897a3e5e87748e4585579',1,'Adafruit_GFX::getTextBounds(const String &amp;str, int16_t x, int16_t y, int16_t *x1, int16_t *y1, uint16_t *w, uint16_t *h)']]],
   ['getting_20started_24',['Getting started',['../md_lib_aa_mqtt_1_0_0_lib_async_mqtt_client_master_docs_1___getting_started.html',1,'']]],
-  ['getuniquename_25',['getUniqueName',['../classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd',1,'aaNetwork::getUniqueName()'],['../classaa_esp32_wroom32v3.html#a31a731a0ea8c9e9b70c324bd4f1dfaee',1,'aaEsp32Wroom32v3::getUniqueName()']]],
+  ['getuniquename_25',['getUniqueName',['../classaa_network.html#a5480c6bb017b0c476b1ff06c0cfef7fd',1,'aaNetwork']]],
   ['gfxcanvas1_26',['GFXcanvas1',['../class_g_f_xcanvas1.html#a3d8047501178f976fb6af095572eb5d0',1,'GFXcanvas1::GFXcanvas1()'],['../class_g_f_xcanvas1.html',1,'GFXcanvas1']]],
   ['gfxcanvas16_27',['GFXcanvas16',['../class_g_f_xcanvas16.html',1,'GFXcanvas16'],['../class_g_f_xcanvas16.html#a1087f17778b9c60db81162e66220b600',1,'GFXcanvas16::GFXcanvas16()']]],
   ['gfxcanvas16serialdemo_28',['GFXcanvas16SerialDemo',['../class_g_f_xcanvas16_serial_demo.html',1,'']]],

@@ -67,43 +67,43 @@ $(function() {
   <div class="headertitle"><div class="title">API reference </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h3><a class="anchor" id="autotoc_md175"></a>
+<div class="textblock"><h3><a class="anchor" id="autotoc_md138"></a>
 AsyncMqttClient()</h3>
 <p >Instantiate a new <a class="el" href="class_async_mqtt_client.html">AsyncMqttClient</a> object.</p>
-<h2><a class="anchor" id="autotoc_md176"></a>
+<h2><a class="anchor" id="autotoc_md139"></a>
 Configuration</h2>
-<h3><a class="anchor" id="autotoc_md177"></a>
+<h3><a class="anchor" id="autotoc_md140"></a>
 AsyncMqttClient&amp; setKeepAlive(uint16_t &lt;tt&gt;keepAlive&lt;/tt&gt;)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the keep alive. Defaults to 15 seconds.</p>
 <ul>
 <li>**<code>keepAlive</code>**: Keep alive in seconds</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md178"></a>
+<h3><a class="anchor" id="autotoc_md141"></a>
 AsyncMqttClient&amp; setClientId(const char* &lt;tt&gt;clientId&lt;/tt&gt;)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the client ID. Defaults to <code>esp8266&lt;chip ID on 6 hex caracters&gt;</code>.</p>
 <ul>
 <li>**<code>clientId</code>**: Client ID</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md179"></a>
+<h3><a class="anchor" id="autotoc_md142"></a>
 AsyncMqttClient&amp; setCleanSession(bool &lt;tt&gt;cleanSession&lt;/tt&gt;)</h3>
 <p >Whether or not to set the CleanSession flag. Defaults to <code>true</code>.</p>
 <ul>
 <li>**<code>cleanSession</code>**: clean session wanted or not</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md180"></a>
+<h3><a class="anchor" id="autotoc_md143"></a>
 AsyncMqttClient&amp; setMaxTopicLength(uint16_t &lt;tt&gt;maxTopicLength&lt;/tt&gt;)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the maximum allowed topic length to receive. If an MQTT packet is received with a topic longer than this maximum, the packet will be ignored. Defaults to <code>128</code>.</p>
 <ul>
 <li>**<code>maxTopicLength</code>**: Maximum allowed topic length to receive</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md181"></a>
+<h3><a class="anchor" id="autotoc_md144"></a>
 AsyncMqttClient&amp; setCredentials(const char* &lt;tt&gt;username&lt;/tt&gt;, const char* &lt;tt&gt;password&lt;/tt&gt; = nullptr)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the username/password. Defaults to non-auth.</p>
 <ul>
 <li>**<code>username</code>**: Username</li>
 <li>**<code>password</code>**: Password</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md182"></a>
+<h3><a class="anchor" id="autotoc_md145"></a>
 AsyncMqttClient&amp; setWill(const char* &lt;tt&gt;topic&lt;/tt&gt;, uint8_t &lt;tt&gt;qos&lt;/tt&gt;, bool &lt;tt&gt;retain&lt;/tt&gt;, const char* &lt;tt&gt;payload&lt;/tt&gt; = nullptr, size_t &lt;tt&gt;length&lt;/tt&gt; = 0)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the Last Will Testament. Defaults to none.</p>
 <ul>
@@ -113,85 +113,85 @@ AsyncMqttClient&amp; setWill(const char* &lt;tt&gt;topic&lt;/tt&gt;, uint8_t &lt
 <li>**<code>payload</code>**: Payload of the LWT. If unset, the payload will be empty</li>
 <li>**<code>length</code>**: Payload length. If unset or set to 0, the payload will be considered as a string and its size will be calculated using <code>strlen(payload)</code></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md183"></a>
+<h3><a class="anchor" id="autotoc_md146"></a>
 AsyncMqttClient&amp; setServer(IPAddress &lt;tt&gt;ip&lt;/tt&gt;, uint16_t &lt;tt&gt;port&lt;/tt&gt;)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the server.</p>
 <ul>
 <li>**<code>ip</code>**: IP of the server</li>
 <li>**<code>port</code>**: Port of the server</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md184"></a>
+<h3><a class="anchor" id="autotoc_md147"></a>
 AsyncMqttClient&amp; setServer(const char* &lt;tt&gt;host&lt;/tt&gt;, uint16_t &lt;tt&gt;port&lt;/tt&gt;)</h3>
 <p ><a class="el" href="class_set.html">Set</a> the server.</p>
 <ul>
 <li>**<code>host</code>**: Host of the server</li>
 <li>**<code>port</code>**: Port of the server</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md185"></a>
+<h3><a class="anchor" id="autotoc_md148"></a>
 AsyncMqttClient&amp; setSecure(bool &lt;tt&gt;secure&lt;/tt&gt;)</h3>
 <p >Whether or not to use SSL. Defaults to <code>false</code>.</p>
 <ul>
 <li>**<code>secure</code>**: SSL wanted or not.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md186"></a>
+<h3><a class="anchor" id="autotoc_md149"></a>
 AsyncMqttClient&amp; addServerFingerprint(const uint8_t* &lt;tt&gt;fingerprint&lt;/tt&gt;)</h3>
 <p >Adds an acceptable server fingerprint (SHA1). This may be called multiple times to permit any one of the specified fingerprints. By default, if no fingerprint is added, any fingerprint is accepted.</p>
 <ul>
 <li>**<code>fingerprint</code>**: Fingerprint to add</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md187"></a>
+<h2><a class="anchor" id="autotoc_md150"></a>
 Events handlers</h2>
-<h3><a class="anchor" id="autotoc_md188"></a>
+<h3><a class="anchor" id="autotoc_md151"></a>
 AsyncMqttClient&amp; onConnect(AsyncMqttClientInternals::OnConnectUserCallback &lt;tt&gt;callback&lt;/tt&gt;)</h3>
 <p >Add a connect event handler.</p>
 <ul>
 <li>**<code>callback</code>**: Function to call</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md189"></a>
+<h3><a class="anchor" id="autotoc_md152"></a>
 AsyncMqttClient&amp; onDisconnect(AsyncMqttClientInternals::OnDisconnectUserCallback &lt;tt&gt;callback&lt;/tt&gt;)</h3>
 <p >Add a disconnect event handler.</p>
 <ul>
 <li>**<code>callback</code>**: Function to call</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md190"></a>
+<h3><a class="anchor" id="autotoc_md153"></a>
 AsyncMqttClient&amp; onSubscribe(AsyncMqttClientInternals::OnSubscribeUserCallback &lt;tt&gt;callback&lt;/tt&gt;)</h3>
 <p >Add a subscribe acknowledged event handler.</p>
 <ul>
 <li>**<code>callback</code>**: Function to call</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md191"></a>
+<h3><a class="anchor" id="autotoc_md154"></a>
 AsyncMqttClient&amp; onUnsubscribe(AsyncMqttClientInternals::OnUnsubscribeUserCallback &lt;tt&gt;callback&lt;/tt&gt;)</h3>
 <p >Add an unsubscribe acknowledged event handler.</p>
 <ul>
 <li>**<code>callback</code>**: Function to call</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md192"></a>
+<h3><a class="anchor" id="autotoc_md155"></a>
 AsyncMqttClient&amp; onMessage(AsyncMqttClientInternals::OnMessageUserCallback &lt;tt&gt;callback&lt;/tt&gt;)</h3>
 <p >Add a publish received event handler.</p>
 <ul>
 <li>**<code>callback</code>**: Function to call</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md193"></a>
+<h3><a class="anchor" id="autotoc_md156"></a>
 AsyncMqttClient&amp; onPublish(AsyncMqttClientInternals::OnPublishUserCallback &lt;tt&gt;callback&lt;/tt&gt;)</h3>
 <p >Add a publish acknowledged event handler.</p>
 <ul>
 <li>**<code>callback</code>**: Function to call</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md194"></a>
+<h2><a class="anchor" id="autotoc_md157"></a>
 Operation functions</h2>
-<h3><a class="anchor" id="autotoc_md195"></a>
+<h3><a class="anchor" id="autotoc_md158"></a>
 bool connected()</h3>
 <p >Return if the client is currently connected to the broker or not.</p>
-<h3><a class="anchor" id="autotoc_md196"></a>
+<h3><a class="anchor" id="autotoc_md159"></a>
 void connect()</h3>
 <p >Connect to the server.</p>
-<h3><a class="anchor" id="autotoc_md197"></a>
+<h3><a class="anchor" id="autotoc_md160"></a>
 void disconnect(bool &lt;tt&gt;force&lt;/tt&gt; = false)</h3>
 <p >Disconnect from the server.</p>
 <ul>
 <li>**<code>force</code>**: Whether to force the disconnection. Defaults to <code>false</code> (clean disconnection).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md198"></a>
+<h3><a class="anchor" id="autotoc_md161"></a>
 uint16_t subscribe(const char* &lt;tt&gt;topic&lt;/tt&gt;, uint8_t &lt;tt&gt;qos&lt;/tt&gt;)</h3>
 <p >Subscribe to the given topic at the given QoS.</p>
 <p >Return the packet ID or 0 if failed.</p>
@@ -199,14 +199,14 @@ uint16_t subscribe(const char* &lt;tt&gt;topic&lt;/tt&gt;, uint8_t &lt;tt&gt;qos
 <li>**<code>topic</code>**: Topic</li>
 <li>**<code>qos</code>**: QoS</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md199"></a>
+<h3><a class="anchor" id="autotoc_md162"></a>
 uint16_t unsubscribe(const char* &lt;tt&gt;topic&lt;/tt&gt;)</h3>
 <p >Unsubscribe from the given topic.</p>
 <p >Return the packet ID or 0 if failed.</p>
 <ul>
 <li>**<code>topic</code>**: Topic</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md200"></a>
+<h3><a class="anchor" id="autotoc_md163"></a>
 uint16_t publish(const char* &lt;tt&gt;topic&lt;/tt&gt;, uint8_t &lt;tt&gt;qos&lt;/tt&gt;, bool &lt;tt&gt;retain&lt;/tt&gt;, const char* &lt;tt&gt;payload&lt;/tt&gt; = nullptr, size_t &lt;tt&gt;length&lt;/tt&gt; = 0, bool dup = false, uint16_t message_id = 0)</h3>
 <p >Publish a packet.</p>
 <p >Return the packet ID (or 1 if QoS 0) or 0 if failed.</p>

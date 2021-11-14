@@ -199,12 +199,6 @@ bool processCmd(String payload)
          x = mqtt.publishMQTT(helpTopicTree, "SET_STD_RGB_CLR,colour - Standard colour for RGB LED. (arg values 0-8).");
          delay(1);
       } //while        
-      x = false;
-      while(x == false)
-      {
-         x = mqtt.publishMQTT(helpTopicTree, "ROTATE_OLED,orientation - Orient text on OLED. (arg values 0-3).");
-         delay(1);
-      } //while        
       Log.noticeln("<processCmd> List of valid MQTT commands sent to MQTT broker."); 
       return true;
    }  // if 

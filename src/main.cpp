@@ -1,7 +1,7 @@
 /******************************************************************************
  * @file main.cpp
  *
- * @mainpage Hexbot firmware. 
+ * @mainpage Zippy firmware. 
  * 
  * @section intro_sec Introduction
  *
@@ -52,18 +52,17 @@ void setup()
    Log.verboseln("<setup> Initialize I2C buses.");  
    Wire.begin(G_I2C_BUS0_SDA, G_I2C_BUS0_SCL, I2C_BUS0_SPEED); // Init I2C bus0.
    scanBus0(); // Scan bus0 and show connected devices.
-   Log.traceln("<setup> Initialize OLED.");
-   initOled();
+   Log.traceln("<setup> Initialize LCD.");
+//   initLCD();
    Log.verboseln("<setup> Initialize status RGB LED."); 
    setupStatusLed(); // Configure the status LED on the reset button.
    setStdRgbColour(WHITE); // Indicates that boot up is in progress.
    Log.verboseln("<setup> Set up wifi connection."); 
    setupNetwork();
-   Log.traceln("<setup> Initialize servo drivers.");
-   setupMobility();
+   Log.traceln("<setup> Initialize DC motors.");
+//   setupMobility();
    Log.verboseln("<setup> Display robot configuration in console trace."); 
    showCfgDetails(); // Show all configuration details in one summary.
-   testDaeIKFunctions(); // Doug's IK routines.
    Log.verboseln("<setup> Review status flags to see how boot sequence went."); 
    checkBoot();   
    timer = millis(); // Timer for motor driver signalling.
@@ -76,6 +75,5 @@ void setup()
 void loop() 
 {
    monitorWebServer(); // Handle any pending web client requests. 
-   checkOledButtons(); // Check if an OLED button has been pressed.
    checkMqtt(); // Check the MQTT message queue for incoming commands.
 } // loop()  

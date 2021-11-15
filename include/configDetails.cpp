@@ -35,29 +35,13 @@ void showCfgDetails()
    {
       Log.verboseln("<showCfgDetails> Network connection status = FALSE");
    } // else
-   if(oledConnected == true)
+   if(lcdConnected == true)
    {
-      Log.verboseln("<showCfgDetails> OLED connection status = TRUE.");
+      Log.verboseln("<showCfgDetails> LCD connection status = TRUE.");
    } // if
    else
    {
       Log.verboseln("<showCfgDetails> OLED connection status = FALSE.");
-   } // else
-   if(motorController1Connected == true)
-   {
-      Log.verboseln("<showCfgDetails> Left servo driver connection status = TRUE.");
-   } // if
-   else
-   {
-      Log.verboseln("<showCfgDetails> Left servo driver connection status = FALSE.");
-   } // else
-   if(motorController2Connected == true)
-   {
-      Log.verboseln("<showCfgDetails> Right servo driver connection status = TRUE.");
-   } // if
-   else
-   {
-      Log.verboseln("<showCfgDetails> Right servo driver connection status = FALSE.");
    } // else
 } //showCfgDetails()
 
@@ -87,7 +71,7 @@ void displayCfgDetails(int8_t menuToShow)
 void checkBoot()
 {
    Log.traceln("<checkBoot> Checking boot status flags."); 
-   if(networkConnected == true && mqttBrokerConnected == true && oledConnected == true && mobilityStatus == true)
+   if(networkConnected == true && mqttBrokerConnected == true && lcdConnected == true && mobilityStatus == true)
    {
       Log.verboseln("<checkBoot> Bootup was normal. Set RGB LED to normal colour."); 
       setStdRgbColour(GREEN); // Indicates that bootup was normal.

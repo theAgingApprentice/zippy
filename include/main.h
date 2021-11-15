@@ -20,6 +20,7 @@
 #include <ArduinoLog.h> // https://github.com/thijse/Arduino-Log.
 #include <zippy_gpio_pins.h> // GPIO pin uses
 #include <SPI.h> 
+#include <LiquidCrystal_I2C.h> // https://github.com/tonykambo/LiquidCrystal_I2C
 
 /*******************************************************************************
  * @section mainVars Global variable definitions.
@@ -32,9 +33,7 @@ aaChip appCpu; // Access information about the ESP32 application microprocessor 
 aaNetwork network(HOST_NAME_PREFIX); // WiFi session management.
 bool networkConnected = false;
 bool mqttBrokerConnected = false;
-bool oledConnected = false;
-bool motorController1Connected = false;
-bool motorController2Connected = false;
+bool lcdConnected = false;
 bool mobilityStatus = false;
 int8_t displayPage = 1;
 // MQTT related variables.
@@ -88,7 +87,7 @@ const uint8_t origXOffset = 2.92; // Distance the knee is offset from the origin
 unsigned long serialBaudRate = 115200; // Serial terminal baud rate.
 // Define local web server related variables.
 bool isWebServer; // True is web server running.
-const char* WEB_APP_TITLE = "Hexbot"; // App name for web page titles.
+const char* WEB_APP_TITLE = "Zippy"; // App name for web page titles.
 aaWebService localWebService(WEB_APP_TITLE); // Webserver hosted by microcontroller.
 
 /************************************************************************************
@@ -116,10 +115,6 @@ void loadRgbColour();
 void setCustRgbColour(uint32_t, uint32_t, uint32_t);
 void setStdRgbColour(uint8_t);
 void setupStatusLed();
-// DAE Inverted kinematic related functions.
-int32_t mapDegToPWM(float *, float *);
-void anglesToCoords(float, float, float, float *, float *, float *);
-void coordsToAngles(float, float, float, float *, float *, float *);  
 // I2C related functions.
 void identifyDevice(int);
 void scanBus0();
@@ -135,6 +130,11 @@ void setupSerial();
 // Define local web server related functions.
 void monitorWebServer();
 void startWebServer();
+// LCD related functions
+void startLcd();
+void displaySplashScreen();
+void displayBootScreen();
+void placeTextHcentre(String, int8_t);  
 
 /*******************************************************************************
  * @section codeModules Functions put into files according to function.
@@ -150,6 +150,7 @@ void startWebServer();
 #include <network.cpp> // Control networking activities.
 #include <mqttBroker.cpp> // Establish connect to the the MQTT broker.
 #include <i2c.cpp> // Scan I2C buses to see what devices are present.
+#include <lcd.cpp> // Control LCD.
 
 /************************************************************************************
  * @section mainDeclare Declare functions in main.cpp.

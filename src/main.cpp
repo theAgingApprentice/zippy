@@ -53,7 +53,7 @@ void setup()
    Wire.begin(G_I2C_BUS0_SDA, G_I2C_BUS0_SCL, I2C_BUS0_SPEED); // Init I2C bus0.
    scanBus0(); // Scan bus0 and show connected devices.
    Log.traceln("<setup> Initialize LCD.");
-//   initLCD();
+   startLcd();
    Log.verboseln("<setup> Initialize status RGB LED."); 
    setupStatusLed(); // Configure the status LED on the reset button.
    setStdRgbColour(WHITE); // Indicates that boot up is in progress.
@@ -64,7 +64,10 @@ void setup()
    Log.verboseln("<setup> Display robot configuration in console trace."); 
    showCfgDetails(); // Show all configuration details in one summary.
    Log.verboseln("<setup> Review status flags to see how boot sequence went."); 
-   checkBoot();   
+   mobilityStatus = true; // temp line to get green boot status until motors implemented.
+   checkBoot(); 
+   Log.verboseln("<setup> Display splash screen on LCD."); 
+   displaySplashScreen();  
    timer = millis(); // Timer for motor driver signalling.
    Log.traceln("<setup> End of setup."); 
 } // setup()

@@ -19,10 +19,10 @@
 #define resetGreenLED PIN_LBL_15 // Green LED in reset button, physical pin 21
 */
 
-const int8_t G_I2C_BUS0_SDA = PIN_17_LBL_SDA; // Serial Data Line (SDA) for I2C bus 0, physical pin 17
-const int8_t G_I2C_BUS0_SCL = PIN_18_LBL_SCL; // Serial Clock Line (SCL) for I2C bus 0, physical pin 18
-const int8_t G_I2C_BUS1_SDA = PIN_15_LBL_TX; // Serial Data Line (SDA) for I2C bus 1, physical pin 15
-const int8_t G_I2C_BUS1_SCL = PIN_16_LBL_21; // Serial Clock Line (SCL) for I2C bus 1, physical pin 16
+const int8_t G_MOT1_SPD = PIN_17_LBL_SDA; // Speed of motor 1, physical pin 17
+const int8_t G_MOT1_DIR = PIN_18_LBL_SCL; // Direction of motor 1, physical pin 18
+const int8_t G_I2C_BUS0_SDA = PIN_15_LBL_TX; // Serial Data Line (SDA) for I2C bus 0, physical pin 15
+const int8_t G_I2C_BUS0_SCL = PIN_16_LBL_21; // Serial Clock Line (SCL) for I2C bus 0, physical pin 16
 //const int8_t G_BUTTON_A = PIN_21_LBL_15; // Button A on OLED featherboard, physical pin 21
 //const int8_t G_BUTTON_B = PIN_20_LBL_32; // Button B on OLED featherboard, physical pin 20
 //const int8_t G_BUTTON_C = PIN_19_LBL_14; // Button C on OLED featherboard, physical pin 19

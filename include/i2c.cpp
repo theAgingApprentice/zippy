@@ -26,7 +26,6 @@ void identifyDevice(int deviceAddress)
   {
     case rightOLED_I2C_ADD:    
       Log.noticeln("<identifyDevice> Device with I2C address %d (%X) identified as Right OLED", deviceAddress, deviceAddress);
-      oledConnected = true;
       break;
     case leftOLED_I2C_ADD:    
       Log.noticeln("<identifyDevice> Device with I2C address %d (%X) identified as Left OLED", deviceAddress, deviceAddress);
@@ -39,6 +38,7 @@ void identifyDevice(int deviceAddress)
       break;
     case LCD16x2:
       Log.noticeln("<identifyDevice> Device with I2C address %d (%X) identified as 16x2 LCD screen", deviceAddress, deviceAddress);
+      lcdConnected = true;
       break;
     default: 
       Log.noticeln("<identifyDevice> Device with I2C address %d (%X) Identified as UKNOWN");

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>icUnderware: Async MQTT client for ESP8266 and ESP32</title>
+<title>icUnderware: LiquidCrystal_I2C</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,25 +64,38 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">Async MQTT client for ESP8266 and ESP32 </div></div>
+  <div class="headertitle"><div class="title"><a class="el" href="class_liquid_crystal___i2_c.html">LiquidCrystal_I2C</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><img src="https://github.com/marvinroger/async-mqtt-client/workflows/Build%20with%20Platformio/badge.svg" alt="Build with PlatformIO" style="pointer-events: none;" class="inline"/> <img src="https://github.com/marvinroger/async-mqtt-client/workflows/cpplint/badge.svg" alt="cpplint" style="pointer-events: none;" class="inline"/></p>
-<p >An Arduino for ESP8266 and ESP32 asynchronous <a href="http://mqtt.org/">MQTT</a> client implementation, built on <a href="https://github.com/me-no-dev/ESPAsyncTCP">me-no-dev/ESPAsyncTCP (ESP8266)</a> | <a href="https://github.com/me-no-dev/AsyncTCP">me-no-dev/AsyncTCP (ESP32)</a> .</p>
-<h1><a class="anchor" id="autotoc_md442"></a>
-Features</h1>
-<ul>
-<li>Compliant with the 3.1.1 version of the protocol</li>
-<li>Fully asynchronous</li>
-<li>Subscribe at QoS 0, 1 and 2</li>
-<li>Publish at QoS 0, 1 and 2</li>
-<li>SSL/TLS support</li>
-<li>Available in the <a href="http://platformio.org/lib/show/346/AsyncMqttClient">PlatformIO registry</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md443"></a>
-Requirements, installation and usage</h1>
-<p >The project is documented in the [/docs folder](docs). </p>
-</div></div><!-- contents -->
+<div class="textblock"><p >LiquidCrystal Arduino library for the DFRobot I2C LCD displays</p>
+<p >Modified to support specifying SCL SDA ports when initialising LCD.</p>
+<h2><a class="anchor" id="autotoc_md458"></a>
+LiquidCrystal_I2C.h</h2>
+<div class="fragment"><div class="line">void init();</div>
+</div><!-- fragment --><p >changed to</p>
+<div class="fragment"><div class="line">void init(uint8_t SDA, uint8_t SCL_PORT);</div>
+</div><!-- fragment --><p >and</p>
+<div class="fragment"><div class="line">void init_priv();</div>
+</div><!-- fragment --><p> changed to</p>
+<div class="fragment"><div class="line">void init_priv(uint8_t SDA_PORT, uint8_t SCL_PORT);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md459"></a>
+LiquidCrystal_I2C.cpp</h2>
+<p >Changed init to this:</p>
+<div class="fragment"><div class="line">void LiquidCrystal_I2C::init(uint8_t SDA_PORT, uint8_t SCL_PORT){</div>
+<div class="line">        init_priv(SDA_PORT, SCL_PORT);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p >and init_priv to this:</p>
+<div class="fragment"><div class="line">void LiquidCrystal_I2C::init_priv(uint8_t SDA_PORT, uint8_t SCL_PORT)</div>
+<div class="line">{</div>
+<div class="line">        Wire.begin(SDA_PORT, SCL_PORT);</div>
+<div class="line">        _displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;</div>
+<div class="line">        begin(_cols, _rows);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p >In the application code you can now do this:</p>
+<div class="fragment"><div class="line">LiquidCrystal_I2C lcd(0x27,20,4);</div>
+<div class="line"> </div>
+<div class="line">lcd.init(2,14);</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

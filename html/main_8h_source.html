@@ -93,121 +93,121 @@ $(function() {
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;ArduinoLog.h&gt;</span> <span class="comment">// https://github.com/thijse/Arduino-Log.</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;zippy_gpio_pins.h&gt;</span> <span class="comment">// GPIO pin uses</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;SPI.h&gt;</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @section mainVars Global variable definitions.</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * @details In order to get rid of &quot;error: &#39;xxx&#39; was not declared in this scope&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * compiler errors list a function from any of the include files here. </span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> *******************************************************************************/</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// Config related variables</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">const</span> <span class="keywordtype">char</span>* HOST_NAME_PREFIX = <span class="stringliteral">&quot;Zippy&quot;</span>; <span class="comment">// Prefix for our unique network name.</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><a class="code hl_class" href="classaa_chip.html">aaChip</a> appCpu; <span class="comment">// Access information about the ESP32 application microprocessor (Core1).</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><a class="code hl_class" href="classaa_network.html">aaNetwork</a> network(HOST_NAME_PREFIX); <span class="comment">// WiFi session management.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">bool</span> networkConnected = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">bool</span> mqttBrokerConnected = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">bool</span> oledConnected = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">bool</span> motorController1Connected = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">bool</span> motorController2Connected = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">bool</span> mobilityStatus = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>int8_t displayPage = 1;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// MQTT related variables.</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_class" href="classaa_flash.html">aaFlash</a> flash; <span class="comment">// Non-volatile memory management. </span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><a class="code hl_class" href="classaa_mqtt.html">aaMqtt</a> mqtt; <span class="comment">// Publish and subscribe to MQTT broker. </span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>IPAddress brokerIP; <span class="comment">// IP address of the MQTT broker.</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">char</span> uniqueName[HOST_NAME_SIZE]; <span class="comment">// Character array that holds unique name for Wifi network purposes. </span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">char</span> *uniqueNamePtr = &amp;uniqueName[0]; <span class="comment">// Pointer to first address position of unique name character array.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">char</span> healthTopicTree[50] = <span class="stringliteral">&quot;&quot;</span>; <span class="comment">// Char array to hold full health topic tree name.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">char</span> helpTopicTree[50] = <span class="stringliteral">&quot;&quot;</span>; <span class="comment">// Char array to hold full health topic tree name.</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>String result[2] = {<span class="stringliteral">&quot;false&quot;</span>,<span class="stringliteral">&quot;true&quot;</span>}; <span class="comment">// Provide english lables for true and flase return codes.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// RGB OLED related variabes.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">const</span> uint8_t numColoursSupported = 9; <span class="comment">// Number of colours LED can be set to.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">const</span> <span class="keywordtype">bool</span> commonAnode = <span class="keyword">true</span>; <span class="comment">// Set to true if RGB LED has a common anode, false for common cathode.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">const</span> uint8_t RED = 0; <span class="comment">// Reset button LED red. </span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">const</span> uint8_t GREEN = 1; <span class="comment">// Reset button LED green. </span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">const</span> uint8_t BLUE = 2; <span class="comment">// Reset button LED blue. </span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">const</span> uint8_t YELLOW = 3; <span class="comment">// Reset button LED YELLOW. </span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">const</span> uint8_t ORANGE = 4; <span class="comment">// Reset button LED PINK.</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">const</span> uint8_t PINK = 5; <span class="comment">// Reset button LED PINK.</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">const</span> uint8_t AQUA = 6; <span class="comment">// Reset button LED aqua. </span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">const</span> uint8_t WHITE = 7; <span class="comment">// Reset button LED white. </span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">const</span> uint8_t BLACK = 8; <span class="comment">// Reset button LED white. </span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">const</span> double_t PWM_FREQ = 500; <span class="comment">// 500Hz.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">const</span> uint8_t PWM_RESOLUTION = 8; <span class="comment">// ESP32 can go up to 8 bit PWM resolution.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#define PWM_RED_CHANNEL 0 </span><span class="comment">// ESP32 has 16 channels which can generate 16 independent waveforms. Use 0 for RGB red.</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#define PWM_GREEN_CHANNEL 1 </span><span class="comment">// ESP32 has 16 channels which can generate 16 independent waveforms. Use 1 for RGB green.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#define PWM_BLUE_CHANNEL 2 </span><span class="comment">// ESP32 has 16 channels which can generate 16 independent waveforms. Use 2 for RGB blue.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structstruct___colour.html">   66</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>   String name; <span class="comment">// Name associated with colour properties</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>   uint32_t redDutyCycle; <span class="comment">// Up time of the PWM signal. Ranges from 0-256. 127 is a 50% duty cycle for example.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>   uint32_t greenDutyCycle; <span class="comment">// Up time of the PWM signal. Ranges from 0-256. 127 is a 50% duty cycle for example.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>   uint32_t blueDutyCycle; <span class="comment">// Up time of the PWM signal. Ranges from 0-256. 127 is a 50% duty cycle for example.</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}<a class="code hl_struct" href="structstruct___colour.html">struct_Colour</a>; </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><a class="code hl_struct" href="structstruct___colour.html">struct_Colour</a> statusColour[numColoursSupported]; <span class="comment">// Array of colours.</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_struct" href="structstruct___colour.html">struct_Colour</a> memColour; <span class="comment">// Used to switch back RGB LED colour when it is temporarily changed.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">// DAE Inverted kinematic related variables.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">const</span> uint8_t footLen = 11; <span class="comment">// Distance from ankle to toe (foot) is 11cm. </span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">const</span> uint8_t shinLen = 7.5; <span class="comment">// Distance from knee to ankle (shin) is 7.5cm.</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">const</span> uint8_t toeOffset = 17; <span class="comment">// Angle that toe is offset from 90deg of ankle joint is 17 degrees.</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">const</span> uint8_t origXOffset = 2.92; <span class="comment">// Distance the knee is offset from the origin along the x axis.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">// I2C related variables.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#define I2C_BUS0_SPEED 400000 </span><span class="comment">// Define speed of I2C bus 2. Note 400KHz is the upper speed limit for ESP32 I2C</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#define MPU6050_I2C_ADD 0x68 </span><span class="comment">// GY521 I2C address.</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#define leftOLED_I2C_ADD 0x3D </span><span class="comment">// OLED used for robot&#39;s left eye I2C adddress.</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#define rightOLED_I2C_ADD 0x3C </span><span class="comment">// OLED used for robot&#39; right eye I2C address.</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#define dcMotorController 0xB0 &gt;&gt; 1 </span><span class="comment">// Wire Library only uses 7 bit addresses so you need to shift address one bit to the right.</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#define LCD16x2 0x3F </span><span class="comment">// Liquid Crystal Display.</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">// Define terminal related variables.</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> serialBaudRate = 115200; <span class="comment">// Serial terminal baud rate.</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">// Define local web server related variables.</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keywordtype">bool</span> isWebServer; <span class="comment">// True is web server running.</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">const</span> <span class="keywordtype">char</span>* WEB_APP_TITLE = <span class="stringliteral">&quot;Hexbot&quot;</span>; <span class="comment">// App name for web page titles.</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><a class="code hl_class" href="classaa_web_service.html">aaWebService</a> localWebService(WEB_APP_TITLE); <span class="comment">// Webserver hosted by microcontroller.</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/************************************************************************************</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"> * @section funcDeclare Declare functions found in the include files.</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> * @details In order to get rid of &quot;error: &#39;xxx&#39; was not declared in this scope&quot;</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> * compiler errors list a function from any of the include files here. </span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> ************************************************************************************/</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">// Config related functions</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">void</span> showCfgDetails();</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keywordtype">void</span> checkBoot();</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">// MQTT related functions</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keywordtype">bool</span> connectToMqttBroker(<a class="code hl_class" href="classaa_network.html">aaNetwork</a> &amp;);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">boolean</span> isValidNumber(String);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>uint32_t convertStrToUint32_t(String);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>uint8_t convertStrToUint8_t(String);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>int8_t convertStrToInt8_t(String);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">bool</span> checkNumArg(int8_t, String *);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">bool</span> processCmd(String);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>IPAddress getMqttBrokerIP();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keywordtype">void</span> checkMqtt();</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">// RGB LED related functions.</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">void</span> createPredefinedColours();</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keywordtype">void</span> saveRgbColour();</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">void</span> loadRgbColour();</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">void</span> setCustRgbColour(uint32_t, uint32_t, uint32_t);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keywordtype">void</span> setStdRgbColour(uint8_t);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">void</span> setupStatusLed();</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">// DAE Inverted kinematic related functions.</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>int32_t mapDegToPWM(<span class="keywordtype">float</span> *, <span class="keywordtype">float</span> *);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keywordtype">void</span> anglesToCoords(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>, <span class="keywordtype">float</span> *, <span class="keywordtype">float</span> *, <span class="keywordtype">float</span> *);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keywordtype">void</span> coordsToAngles(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>, <span class="keywordtype">float</span> *, <span class="keywordtype">float</span> *, <span class="keywordtype">float</span> *);  </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">// I2C related functions.</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keywordtype">void</span> identifyDevice(<span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keywordtype">void</span> scanBus0();</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keywordtype">void</span> scanBus1();</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">// Define servoLegs related functions.</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keywordtype">void</span> startPositionLegs(int8_t, int8_t);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keywordtype">void</span> initServos();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keywordtype">void</span> initLegs();</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keywordtype">bool</span> moveLeg(int8_t, int8_t, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keywordtype">void</span> setupMobility();  </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">// Define terminal related functions.</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keywordtype">void</span> setupSerial();</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">// Define local web server related functions.</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="keywordtype">void</span> monitorWebServer();</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> startWebServer();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;LiquidCrystal_I2C.h&gt;</span> <span class="comment">// https://github.com/tonykambo/LiquidCrystal_I2C</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * @section mainVars Global variable definitions.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * @details In order to get rid of &quot;error: &#39;xxx&#39; was not declared in this scope&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * compiler errors list a function from any of the include files here. </span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> *******************************************************************************/</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// Config related variables</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">const</span> <span class="keywordtype">char</span>* HOST_NAME_PREFIX = <span class="stringliteral">&quot;Zippy&quot;</span>; <span class="comment">// Prefix for our unique network name.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><a class="code hl_class" href="classaa_chip.html">aaChip</a> appCpu; <span class="comment">// Access information about the ESP32 application microprocessor (Core1).</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_class" href="classaa_network.html">aaNetwork</a> network(HOST_NAME_PREFIX); <span class="comment">// WiFi session management.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">bool</span> networkConnected = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">bool</span> mqttBrokerConnected = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">bool</span> lcdConnected = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">bool</span> mobilityStatus = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>int8_t displayPage = 1;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// MQTT related variables.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><a class="code hl_class" href="classaa_flash.html">aaFlash</a> flash; <span class="comment">// Non-volatile memory management. </span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_class" href="classaa_mqtt.html">aaMqtt</a> mqtt; <span class="comment">// Publish and subscribe to MQTT broker. </span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>IPAddress brokerIP; <span class="comment">// IP address of the MQTT broker.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">char</span> uniqueName[HOST_NAME_SIZE]; <span class="comment">// Character array that holds unique name for Wifi network purposes. </span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">char</span> *uniqueNamePtr = &amp;uniqueName[0]; <span class="comment">// Pointer to first address position of unique name character array.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">char</span> healthTopicTree[50] = <span class="stringliteral">&quot;&quot;</span>; <span class="comment">// Char array to hold full health topic tree name.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">char</span> helpTopicTree[50] = <span class="stringliteral">&quot;&quot;</span>; <span class="comment">// Char array to hold full health topic tree name.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>String result[2] = {<span class="stringliteral">&quot;false&quot;</span>,<span class="stringliteral">&quot;true&quot;</span>}; <span class="comment">// Provide english lables for true and flase return codes.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// RGB OLED related variabes.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">const</span> uint8_t numColoursSupported = 9; <span class="comment">// Number of colours LED can be set to.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">const</span> <span class="keywordtype">bool</span> commonAnode = <span class="keyword">true</span>; <span class="comment">// Set to true if RGB LED has a common anode, false for common cathode.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">const</span> uint8_t RED = 0; <span class="comment">// Reset button LED red. </span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">const</span> uint8_t GREEN = 1; <span class="comment">// Reset button LED green. </span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">const</span> uint8_t BLUE = 2; <span class="comment">// Reset button LED blue. </span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">const</span> uint8_t YELLOW = 3; <span class="comment">// Reset button LED YELLOW. </span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">const</span> uint8_t ORANGE = 4; <span class="comment">// Reset button LED PINK.</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">const</span> uint8_t PINK = 5; <span class="comment">// Reset button LED PINK.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">const</span> uint8_t AQUA = 6; <span class="comment">// Reset button LED aqua. </span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">const</span> uint8_t WHITE = 7; <span class="comment">// Reset button LED white. </span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">const</span> uint8_t BLACK = 8; <span class="comment">// Reset button LED white. </span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">const</span> double_t PWM_FREQ = 500; <span class="comment">// 500Hz.</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">const</span> uint8_t PWM_RESOLUTION = 8; <span class="comment">// ESP32 can go up to 8 bit PWM resolution.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#define PWM_RED_CHANNEL 0 </span><span class="comment">// ESP32 has 16 channels which can generate 16 independent waveforms. Use 0 for RGB red.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#define PWM_GREEN_CHANNEL 1 </span><span class="comment">// ESP32 has 16 channels which can generate 16 independent waveforms. Use 1 for RGB green.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#define PWM_BLUE_CHANNEL 2 </span><span class="comment">// ESP32 has 16 channels which can generate 16 independent waveforms. Use 2 for RGB blue.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structstruct___colour.html">   65</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>   String name; <span class="comment">// Name associated with colour properties</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>   uint32_t redDutyCycle; <span class="comment">// Up time of the PWM signal. Ranges from 0-256. 127 is a 50% duty cycle for example.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>   uint32_t greenDutyCycle; <span class="comment">// Up time of the PWM signal. Ranges from 0-256. 127 is a 50% duty cycle for example.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>   uint32_t blueDutyCycle; <span class="comment">// Up time of the PWM signal. Ranges from 0-256. 127 is a 50% duty cycle for example.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}<a class="code hl_struct" href="structstruct___colour.html">struct_Colour</a>; </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><a class="code hl_struct" href="structstruct___colour.html">struct_Colour</a> statusColour[numColoursSupported]; <span class="comment">// Array of colours.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><a class="code hl_struct" href="structstruct___colour.html">struct_Colour</a> memColour; <span class="comment">// Used to switch back RGB LED colour when it is temporarily changed.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// DAE Inverted kinematic related variables.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">const</span> uint8_t footLen = 11; <span class="comment">// Distance from ankle to toe (foot) is 11cm. </span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">const</span> uint8_t shinLen = 7.5; <span class="comment">// Distance from knee to ankle (shin) is 7.5cm.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">const</span> uint8_t toeOffset = 17; <span class="comment">// Angle that toe is offset from 90deg of ankle joint is 17 degrees.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">const</span> uint8_t origXOffset = 2.92; <span class="comment">// Distance the knee is offset from the origin along the x axis.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">// I2C related variables.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#define I2C_BUS0_SPEED 400000 </span><span class="comment">// Define speed of I2C bus 2. Note 400KHz is the upper speed limit for ESP32 I2C</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#define MPU6050_I2C_ADD 0x68 </span><span class="comment">// GY521 I2C address.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#define leftOLED_I2C_ADD 0x3D </span><span class="comment">// OLED used for robot&#39;s left eye I2C adddress.</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#define rightOLED_I2C_ADD 0x3C </span><span class="comment">// OLED used for robot&#39; right eye I2C address.</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#define dcMotorController 0xB0 &gt;&gt; 1 </span><span class="comment">// Wire Library only uses 7 bit addresses so you need to shift address one bit to the right.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#define LCD16x2 0x3F </span><span class="comment">// Liquid Crystal Display.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">// Define terminal related variables.</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> serialBaudRate = 115200; <span class="comment">// Serial terminal baud rate.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">// Define local web server related variables.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">bool</span> isWebServer; <span class="comment">// True is web server running.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">const</span> <span class="keywordtype">char</span>* WEB_APP_TITLE = <span class="stringliteral">&quot;Zippy&quot;</span>; <span class="comment">// App name for web page titles.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><a class="code hl_class" href="classaa_web_service.html">aaWebService</a> localWebService(WEB_APP_TITLE); <span class="comment">// Webserver hosted by microcontroller.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">/************************************************************************************</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment"> * @section funcDeclare Declare functions found in the include files.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"> * @details In order to get rid of &quot;error: &#39;xxx&#39; was not declared in this scope&quot;</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> * compiler errors list a function from any of the include files here. </span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> ************************************************************************************/</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">// Config related functions</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> showCfgDetails();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">void</span> checkBoot();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">// MQTT related functions</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">bool</span> connectToMqttBroker(<a class="code hl_class" href="classaa_network.html">aaNetwork</a> &amp;);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keywordtype">boolean</span> isValidNumber(String);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>uint32_t convertStrToUint32_t(String);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>uint8_t convertStrToUint8_t(String);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>int8_t convertStrToInt8_t(String);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">bool</span> checkNumArg(int8_t, String *);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">bool</span> processCmd(String);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>IPAddress getMqttBrokerIP();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">void</span> checkMqtt();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">// RGB LED related functions.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">void</span> createPredefinedColours();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">void</span> saveRgbColour();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keywordtype">void</span> loadRgbColour();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">void</span> setCustRgbColour(uint32_t, uint32_t, uint32_t);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">void</span> setStdRgbColour(uint8_t);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keywordtype">void</span> setupStatusLed();</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">// I2C related functions.</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keywordtype">void</span> identifyDevice(<span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keywordtype">void</span> scanBus0();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keywordtype">void</span> scanBus1();</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">// Define servoLegs related functions.</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordtype">void</span> startPositionLegs(int8_t, int8_t);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keywordtype">void</span> initServos();</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keywordtype">void</span> initLegs();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keywordtype">bool</span> moveLeg(int8_t, int8_t, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keywordtype">void</span> setupMobility();  </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">// Define terminal related functions.</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keywordtype">void</span> setupSerial();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">// Define local web server related functions.</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keywordtype">void</span> monitorWebServer();</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keywordtype">void</span> startWebServer();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">// LCD related functions</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keywordtype">void</span> startLcd();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">void</span> displaySplashScreen();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="keywordtype">void</span> displayBootScreen();</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> placeTextHcentre(String, int8_t);  </div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">/*******************************************************************************</span></div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"> * @section codeModules Functions put into files according to function.</span></div>
@@ -223,14 +223,15 @@ $(function() {
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#include &lt;network.cpp&gt;</span> <span class="comment">// Control networking activities.</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#include &lt;mqttBroker.cpp&gt;</span> <span class="comment">// Establish connect to the the MQTT broker.</span></div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="preprocessor">#include &lt;i2c.cpp&gt;</span> <span class="comment">// Scan I2C buses to see what devices are present.</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">/************************************************************************************</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment"> * @section mainDeclare Declare functions in main.cpp.</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"> ************************************************************************************/</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keywordtype">void</span> setup(); <span class="comment">// Arduino mandatory function #1. Runs once at boot. </span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keywordtype">void</span> loop(); <span class="comment">// Arduino mandatory function #2. Runs continually.</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">#endif </span><span class="comment">// End of precompiler protected code block</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="preprocessor">#include &lt;lcd.cpp&gt;</span> <span class="comment">// Control LCD.</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">/************************************************************************************</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"> * @section mainDeclare Declare functions in main.cpp.</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"> ************************************************************************************/</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keywordtype">void</span> setup(); <span class="comment">// Arduino mandatory function #1. Runs once at boot. </span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">void</span> loop(); <span class="comment">// Arduino mandatory function #2. Runs continually.</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="preprocessor">#endif </span><span class="comment">// End of precompiler protected code block</span></div>
 <div class="ttc" id="a_adafruit___p_w_m_servo_driver_8h_html"><div class="ttname"><a href="_adafruit___p_w_m_servo_driver_8h.html">Adafruit_PWMServoDriver.h</a></div></div>
 <div class="ttc" id="aaa_chip_8h_html"><div class="ttname"><a href="aa_chip_8h.html">aaChip.h</a></div></div>
 <div class="ttc" id="aclassaa_chip_html"><div class="ttname"><a href="classaa_chip.html">aaChip</a></div><div class="ttdef"><b>Definition:</b> aaChip.h:36</div></div>
@@ -238,7 +239,7 @@ $(function() {
 <div class="ttc" id="aclassaa_mqtt_html"><div class="ttname"><a href="classaa_mqtt.html">aaMqtt</a></div><div class="ttdef"><b>Definition:</b> aaMqtt.h:31</div></div>
 <div class="ttc" id="aclassaa_network_html"><div class="ttname"><a href="classaa_network.html">aaNetwork</a></div><div class="ttdef"><b>Definition:</b> aaNetwork.h:36</div></div>
 <div class="ttc" id="aclassaa_web_service_html"><div class="ttname"><a href="classaa_web_service.html">aaWebService</a></div><div class="ttdef"><b>Definition:</b> aaWebService.h:36</div></div>
-<div class="ttc" id="astructstruct___colour_html"><div class="ttname"><a href="structstruct___colour.html">struct_Colour</a></div><div class="ttdef"><b>Definition:</b> main.h:67</div></div>
+<div class="ttc" id="astructstruct___colour_html"><div class="ttname"><a href="structstruct___colour.html">struct_Colour</a></div><div class="ttdef"><b>Definition:</b> main.h:66</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

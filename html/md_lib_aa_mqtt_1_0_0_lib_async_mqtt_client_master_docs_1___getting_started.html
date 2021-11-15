@@ -73,17 +73,17 @@ $(function() {
 <li>The Arduino IDE for ESP8266 (version 2.2.0 minimum)</li>
 <li>Basic knowledge of the Arduino environment (upload a sketch, import libraries, ...)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md129"></a>
+<h1><a class="anchor" id="autotoc_md133"></a>
 Installing AsyncMqttClient</h1>
 <p >There are two ways to install <a class="el" href="class_async_mqtt_client.html">AsyncMqttClient</a>.</p>
-<h2><a class="anchor" id="autotoc_md130"></a>
+<h2><a class="anchor" id="autotoc_md134"></a>
 1a. For the Arduino IDE</h2>
 <ol type="1">
 <li>Download the <a href="https://github.com/marvinroger/async-mqtt-client/releases/latest">corresponding release</a></li>
 <li>Load the <code>.zip</code> with <b>Sketch → Include Library → Add .ZIP Library</b></li>
 </ol>
 <p ><a class="el" href="class_async_mqtt_client.html">AsyncMqttClient</a> has 1 dependency: <a href="https://github.com/me-no-dev/ESPAsyncTCP">ESPAsyncTCP</a>. Download the <a href="https://github.com/me-no-dev/ESPAsyncTCP/archive/master.zip">.zip</a> and install it with the same method as above.</p>
-<h1><a class="anchor" id="autotoc_md131"></a>
+<h1><a class="anchor" id="autotoc_md135"></a>
 Fully-featured sketch</h1>
 <p >See <a href="../examples/FullyFeatured-ESP8266/FullyFeatured-ESP8266.ino">examples/FullyFeatured-ESP8266.ino</a></p>
 <p >**<u>Very important:</u> As a rule of thumb, never use blocking functions in the callbacks (don't use <code>delay()</code> or <code>yield()</code>).** Otherwise, you may very probably experience unexpected behaviors.</p>

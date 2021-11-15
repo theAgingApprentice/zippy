@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['default_5fspi_5ffreq_0',['DEFAULT_SPI_FREQ',['../_adafruit___s_p_i_t_f_t_8h.html#a7434818958eb0d2993bbd2021eea141d',1,'Adafruit_SPITFT.h']]]
+  ['frequency_5foscillator_0',['FREQUENCY_OSCILLATOR',['../_adafruit___p_w_m_servo_driver_8h.html#aa01c719324fe02571722dbb29b3a2a1b',1,'Adafruit_PWMServoDriver.h']]]
 ];

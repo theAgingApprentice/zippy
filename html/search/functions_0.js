@@ -12,10 +12,9 @@ var searchData=
   ['_5fdefineoptionpage_9',['_defineOptionPage',['../classaa_web.html#a5bd828da187ab40467e20b2c0c41a766',1,'aaWeb::_defineOptionPage()'],['../classaa_web_service.html#a94ca6d70266d5de328e55f561ef689b4',1,'aaWebService::_defineOptionPage()']]],
   ['_5fdefineotapage_10',['_defineOtaPage',['../classaa_web.html#acb8f7c232afb602e8d1227a4bcbb0497',1,'aaWeb::_defineOtaPage()'],['../classaa_web_service.html#a3ac57226e02c60d5686afe86231694ae',1,'aaWebService::_defineOtaPage()']]],
   ['_5fdefinestylesheet_11',['_defineStyleSheet',['../classaa_web.html#ad7792fc14efafc94ac012a79f0688396',1,'aaWeb::_defineStyleSheet()'],['../classaa_web_service.html#a94444b4d44f1c47f65139376dbdc33da',1,'aaWebService::_defineStyleSheet()']]],
-  ['_5finit_12',['_init',['../class_adafruit___gray_o_l_e_d.html#a11bd4d7d0f9c14e1c7ce839b6318c9de',1,'Adafruit_GrayOLED']]],
-  ['_5flookforap_13',['_lookForAP',['../classaa_network.html#ab5830b5ba0c2372949370fe6c278416d',1,'aaNetwork']]],
-  ['_5fparsebytes_14',['_parseBytes',['../classaa_format.html#a39e6b5120212b648de96bca4d434c297',1,'aaFormat']]],
-  ['_5fshiftbuffer_15',['_shiftBuffer',['../classaa_string_queue.html#aed6a7b76f5f02ecb8a61ab76425e50d7',1,'aaStringQueue']]],
-  ['_5ftranslateencryptiontype_16',['_translateEncryptionType',['../classaa_network.html#ab81630a3a226361aba036cf79cb5d613',1,'aaNetwork']]],
-  ['_5fwifievent_17',['_wiFiEvent',['../classaa_network.html#ad34d85b8a355cbcd9a1df583f6505bc7',1,'aaNetwork']]]
+  ['_5flookforap_12',['_lookForAP',['../classaa_network.html#ab5830b5ba0c2372949370fe6c278416d',1,'aaNetwork']]],
+  ['_5fparsebytes_13',['_parseBytes',['../classaa_format.html#a39e6b5120212b648de96bca4d434c297',1,'aaFormat']]],
+  ['_5fshiftbuffer_14',['_shiftBuffer',['../classaa_string_queue.html#aed6a7b76f5f02ecb8a61ab76425e50d7',1,'aaStringQueue']]],
+  ['_5ftranslateencryptiontype_15',['_translateEncryptionType',['../classaa_network.html#ab81630a3a226361aba036cf79cb5d613',1,'aaNetwork']]],
+  ['_5fwifievent_16',['_wiFiEvent',['../classaa_network.html#ad34d85b8a355cbcd9a1df583f6505bc7',1,'aaNetwork']]]
 ];

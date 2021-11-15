@@ -14,8 +14,5 @@ var searchData=
   ['mode2_5foch_11',['MODE2_OCH',['../_adafruit___p_w_m_servo_driver_8h.html#ade8ebd9f47ddd0df1c9a6a168715d3ba',1,'Adafruit_PWMServoDriver.h']]],
   ['mode2_5foutdrv_12',['MODE2_OUTDRV',['../_adafruit___p_w_m_servo_driver_8h.html#ac0b6fef9fdf05ea3379c7513c86ad06d',1,'Adafruit_PWMServoDriver.h']]],
   ['mode2_5foutne_5f0_13',['MODE2_OUTNE_0',['../_adafruit___p_w_m_servo_driver_8h.html#a6d24c8c3abd9c28a768d225830b880a4',1,'Adafruit_PWMServoDriver.h']]],
-  ['mode2_5foutne_5f1_14',['MODE2_OUTNE_1',['../_adafruit___p_w_m_servo_driver_8h.html#ab77b30799da648b6d84921c05da7cb1d',1,'Adafruit_PWMServoDriver.h']]],
-  ['monooled_5fblack_15',['MONOOLED_BLACK',['../_adafruit___gray_o_l_e_d_8h.html#a3cd0663cfb4168a8ef85fac3e5cdfc2c',1,'Adafruit_GrayOLED.h']]],
-  ['monooled_5finverse_16',['MONOOLED_INVERSE',['../_adafruit___gray_o_l_e_d_8h.html#a6161c863d48501bf58d8de22a1a9752e',1,'Adafruit_GrayOLED.h']]],
-  ['monooled_5fwhite_17',['MONOOLED_WHITE',['../_adafruit___gray_o_l_e_d_8h.html#adb07f2f75591bb261eda8fdd0298b966',1,'Adafruit_GrayOLED.h']]]
+  ['mode2_5foutne_5f1_14',['MODE2_OUTNE_1',['../_adafruit___p_w_m_servo_driver_8h.html#ab77b30799da648b6d84921c05da7cb1d',1,'Adafruit_PWMServoDriver.h']]]
 ];

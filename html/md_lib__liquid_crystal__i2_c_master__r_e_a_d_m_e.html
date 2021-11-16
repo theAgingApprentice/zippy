@@ -69,7 +69,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p >LiquidCrystal Arduino library for the DFRobot I2C LCD displays</p>
 <p >Modified to support specifying SCL SDA ports when initialising LCD.</p>
-<h2><a class="anchor" id="autotoc_md458"></a>
+<h2><a class="anchor" id="autotoc_md460"></a>
 LiquidCrystal_I2C.h</h2>
 <div class="fragment"><div class="line">void init();</div>
 </div><!-- fragment --><p >changed to</p>
@@ -78,7 +78,7 @@ LiquidCrystal_I2C.h</h2>
 <div class="fragment"><div class="line">void init_priv();</div>
 </div><!-- fragment --><p> changed to</p>
 <div class="fragment"><div class="line">void init_priv(uint8_t SDA_PORT, uint8_t SCL_PORT);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md459"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md461"></a>
 LiquidCrystal_I2C.cpp</h2>
 <p >Changed init to this:</p>
 <div class="fragment"><div class="line">void LiquidCrystal_I2C::init(uint8_t SDA_PORT, uint8_t SCL_PORT){</div>

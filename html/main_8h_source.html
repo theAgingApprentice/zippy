@@ -224,14 +224,15 @@ $(function() {
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#include &lt;mqttBroker.cpp&gt;</span> <span class="comment">// Establish connect to the the MQTT broker.</span></div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="preprocessor">#include &lt;i2c.cpp&gt;</span> <span class="comment">// Scan I2C buses to see what devices are present.</span></div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="preprocessor">#include &lt;lcd.cpp&gt;</span> <span class="comment">// Control LCD.</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">/************************************************************************************</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"> * @section mainDeclare Declare functions in main.cpp.</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"> ************************************************************************************/</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keywordtype">void</span> setup(); <span class="comment">// Arduino mandatory function #1. Runs once at boot. </span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">void</span> loop(); <span class="comment">// Arduino mandatory function #2. Runs continually.</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="preprocessor">#endif </span><span class="comment">// End of precompiler protected code block</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="preprocessor">#include &lt;limitSwitch.cpp&gt;</span> <span class="comment">// Limit switches used to detect robot falling over.</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">/************************************************************************************</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"> * @section mainDeclare Declare functions in main.cpp.</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment"> ************************************************************************************/</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">void</span> setup(); <span class="comment">// Arduino mandatory function #1. Runs once at boot. </span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keywordtype">void</span> loop(); <span class="comment">// Arduino mandatory function #2. Runs continually.</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="preprocessor">#endif </span><span class="comment">// End of precompiler protected code block</span></div>
 <div class="ttc" id="a_adafruit___p_w_m_servo_driver_8h_html"><div class="ttname"><a href="_adafruit___p_w_m_servo_driver_8h.html">Adafruit_PWMServoDriver.h</a></div></div>
 <div class="ttc" id="aaa_chip_8h_html"><div class="ttname"><a href="aa_chip_8h.html">aaChip.h</a></div></div>
 <div class="ttc" id="aclassaa_chip_html"><div class="ttname"><a href="classaa_chip.html">aaChip</a></div><div class="ttdef"><b>Definition:</b> aaChip.h:36</div></div>

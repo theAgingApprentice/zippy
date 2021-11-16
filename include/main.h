@@ -151,6 +151,7 @@ void placeTextHcentre(String, int8_t);
 #include <mqttBroker.cpp> // Establish connect to the the MQTT broker.
 #include <i2c.cpp> // Scan I2C buses to see what devices are present.
 #include <lcd.cpp> // Control LCD.
+#include <limitSwitch.cpp> // Limit switches used to detect robot falling over.
 
 /************************************************************************************
  * @section mainDeclare Declare functions in main.cpp.

@@ -57,6 +57,8 @@ void setup()
    Log.verboseln("<setup> Initialize status RGB LED."); 
    setupStatusLed(); // Configure the status LED on the reset button.
    setStdRgbColour(WHITE); // Indicates that boot up is in progress.
+   Log.verboseln("<setup> Initialize limit switches."); 
+   setupLimitSwitches(); // Configure limit switches.
    Log.verboseln("<setup> Set up wifi connection."); 
    setupNetwork();
    Log.traceln("<setup> Initialize DC motors.");
@@ -77,6 +79,7 @@ void setup()
  * ==========================================================================*/
 void loop() 
 {
+   checkLimitSwitches(); // Make update to status LED on reset button.
    monitorWebServer(); // Handle any pending web client requests. 
    checkMqtt(); // Check the MQTT message queue for incoming commands.
 } // loop()  

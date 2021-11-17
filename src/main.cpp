@@ -62,7 +62,7 @@ void setup()
    Log.verboseln("<setup> Set up wifi connection."); 
    setupNetwork();
    Log.traceln("<setup> Initialize DC motors.");
-//   setupMobility();
+   setupMotCntl();
    Log.verboseln("<setup> Display robot configuration in console trace."); 
    showCfgDetails(); // Show all configuration details in one summary.
    Log.verboseln("<setup> Review status flags to see how boot sequence went."); 

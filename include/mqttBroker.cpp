@@ -198,7 +198,20 @@ bool processCmd(String payload)
       {
          x = mqtt.publishMQTT(helpTopicTree, "SET_STD_RGB_CLR,colour - Standard colour for RGB LED. (arg values 0-8).");
          delay(1);
-      } //while        
+      } //while   
+      x = false;
+      while(x == false)
+      {
+         x = mqtt.publishMQTT(helpTopicTree, "SET_MOT_SPD,motor number (0 = left, 1 = right), dutycycle (0 to 255).");
+         delay(1);
+      } //while 
+      x = false;
+      while(x == false)
+      {
+         x = mqtt.publishMQTT(helpTopicTree, "SET_MOT_DIR,motor number (0 = left, 1 = right), direction (0 = stop, 1 = Forward, 2 = backward).");
+         delay(1);
+      } //while 
+      //SET_MOT_DIR  
       Log.noticeln("<processCmd> List of valid MQTT commands sent to MQTT broker."); 
       return true;
    }  // if 
@@ -211,7 +224,7 @@ bool processCmd(String payload)
          uint32_t red = convertStrToUint32_t(arg[1]);
          uint32_t green = convertStrToUint32_t(arg[2]); 
          uint32_t blue = convertStrToUint32_t(arg[3]);
-         Log.noticeln("<processCmd> Set RGB LED values R = %u, G = %u, B = %u.", red, green, blue); 
+         Log.verboseln("<processCmd> Set RGB LED values R = %u, G = %u, B = %u.", red, green, blue); 
          setCustRgbColour(red, green, blue);
          return true;
       } // if
@@ -235,6 +248,50 @@ bool processCmd(String payload)
          return false;
       } // else       
    } // if
+   // SET_MOT_SPD command.
+   if(cmd == "SET_MOT_SPD")
+   {
+      const int8_t numArgumentsRequired = 2; // How many arguments expected?
+      if(checkNumArg(numArgumentsRequired, argN, &arg[0]))
+      {
+         uint8_t motNum = convertStrToUint8_t(arg[1]);
+         uint8_t dtyCycle = convertStrToUint8_t(arg[2]);
+         Log.verboseln("<processCmd> Set motor %u to duty cycle %u.", motNum, dtyCycle); 
+         bool tmp = setMotorSpeed(motNum, dtyCycle);
+         if(tmp == false)
+         {
+            Log.errorln("<processCmd> Something went wrong setting motor speed."); 
+            return false;
+         } // if
+         return true;
+      } // if
+      else
+      {
+         return false;
+      } // else
+   } // if   
+   // SET_MOT_DIR command.
+   if(cmd == "SET_MOT_DIR")
+   {
+      const int8_t numArgumentsRequired = 2; // How many arguments expected?
+      if(checkNumArg(numArgumentsRequired, argN, &arg[0]))
+      {
+         uint8_t motNum = convertStrToUint8_t(arg[1]);
+         uint8_t direction = convertStrToUint8_t(arg[2]);
+         Log.verboseln("<processCmd> Set motor %u direction as %u.", motNum, direction); 
+         bool tmp = setMotorDirection(motNum, direction);
+         if(tmp == false)
+         {
+            Log.errorln("<processCmd> Something went wrong setting motor direction."); 
+            return false;
+         } // if
+         return true;
+      } // if
+      else
+      {
+         return false;
+      } // else
+   } // if      
    Log.warningln("<processCmd> Warning - unrecognized command."); 
    return false;
 } // processCmd()

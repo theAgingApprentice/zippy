@@ -62,6 +62,10 @@ const uint8_t PWM_RESOLUTION = 8; // ESP32 can go up to 8 bit PWM resolution.
 #define PWM_RED_CHANNEL 0 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 0 for RGB red.
 #define PWM_GREEN_CHANNEL 1 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 1 for RGB green.
 #define PWM_BLUE_CHANNEL 2 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 2 for RGB blue.
+#define PWM_MOT1_CHANNEL 3 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 3 for motor 1 speed.  
+#define PWM_MOT2_CHANNEL 4 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 4 for motor 2 speed.  
+const uint8_t LEFT_MOTOR = 0; // Refer to left motor.
+const uint8_t RIGHT_MOTOR = 1; // Refer to right motor.
 typedef struct
 {
    String name; // Name associated with colour properties
@@ -134,7 +138,11 @@ void startWebServer();
 void startLcd();
 void displaySplashScreen();
 void displayBootScreen();
-void placeTextHcentre(String, int8_t);  
+void placeTextHcentre(String, int8_t); 
+// Drive motor related functions.
+void setupMotCntl();
+bool setMotorSpeed(uint8_t, uint32_t); 
+bool setMotorDirection(uint8_t, uint8_t);
 
 /*******************************************************************************
  * @section codeModules Functions put into files according to function.
@@ -152,6 +160,7 @@ void placeTextHcentre(String, int8_t);
 #include <i2c.cpp> // Scan I2C buses to see what devices are present.
 #include <lcd.cpp> // Control LCD.
 #include <limitSwitch.cpp> // Limit switches used to detect robot falling over.
+#include <emg30.cpp> // Control drive motors.
 
 /************************************************************************************
  * @section mainDeclare Declare functions in main.cpp.

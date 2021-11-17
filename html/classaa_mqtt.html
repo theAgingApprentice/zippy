@@ -127,7 +127,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md198"></a>
+<h1><a class="anchor" id="autotoc_md201"></a>
 @class Write variables to flash memory.</h1>
 
 </div>
@@ -146,7 +146,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md199"></a>
+<h1><a class="anchor" id="autotoc_md202"></a>
 @brief This is the destructor for this class.</h1>
 
 </div>
@@ -193,7 +193,7 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md200"></a>
+<h1><a class="anchor" id="autotoc_md203"></a>
 @param char* Unique name used to prefix all topic trees.</h1>
 
 </div>
@@ -222,7 +222,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Event handler for the ACK from a published message. </p>
-<h1><a class="anchor" id="autotoc_md211"></a>
+<h1><a class="anchor" id="autotoc_md214"></a>
 @param uint16_t Packet Id of message that was published.</h1>
 
 </div>
@@ -252,7 +252,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Event handler for connecting to the broker. </p>
-<h1><a class="anchor" id="autotoc_md201"></a>
+<h1><a class="anchor" id="autotoc_md204"></a>
 @param bool  Check to see if there are messages queued already.</h1>
 
 </div>
@@ -282,7 +282,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Event handler for disconnecting from the broker. </p>
-<h1><a class="anchor" id="autotoc_md202"></a>
+<h1><a class="anchor" id="autotoc_md205"></a>
 @param AsyncMqttClientDisconnectReason Reason code.</h1>
 
 </div>
@@ -357,7 +357,7 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md210"></a>
+<h1><a class="anchor" id="autotoc_md213"></a>
 @param size_t Total length of message.</h1>
 
 </div>
@@ -387,7 +387,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Event handler for the ACK from a published message. </p>
-<h1><a class="anchor" id="autotoc_md212"></a>
+<h1><a class="anchor" id="autotoc_md215"></a>
 @param uint16_t Packet Id of message that was published.</h1>
 
 </div>
@@ -434,16 +434,16 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md203"></a>
+<h1><a class="anchor" id="autotoc_md206"></a>
 Suback Message</h1>
 <p >To confirm each subscription, the broker sends a SUBACK acknowledgement message to the client. This message contains the packet identifier of the original Subscribe message (to clearly identify the message) and a list of return codes.</p>
-<h2><a class="anchor" id="autotoc_md204"></a>
+<h2><a class="anchor" id="autotoc_md207"></a>
 Packet Identifier</h2>
 <p >The packet identifier is a unique identifier used to identify a message. It is the same as in the SUBSCRIBE message.</p>
-<h2><a class="anchor" id="autotoc_md205"></a>
+<h2><a class="anchor" id="autotoc_md208"></a>
 Return Code</h2>
 <p >The broker sends one return code for each topic/QoS-pair that it receives in the SUBSCRIBE message. For example, if the SUBSCRIBE message has five subscriptions, the SUBACK message contains five return codes. The return code acknowledges each topic and shows the QoS level that is granted by the broker. If the broker refuses a subscription, the SUBACK message conains a failure return code for that specific topic. For example, if the client has insufficient permission to subscribe to the topic or the topic is malformed.</p>
-<h1><a class="anchor" id="autotoc_md206"></a>
+<h1><a class="anchor" id="autotoc_md209"></a>
 Table of SUBACK return codes</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -486,7 +486,7 @@ Table of SUBACK return codes</h1>
 </div><div class="memdoc">
 
 <p>Event handler for subscribing to a topic on the broker. </p>
-<h1><a class="anchor" id="autotoc_md207"></a>
+<h1><a class="anchor" id="autotoc_md210"></a>
 @param uint16_t PackID that matches the unsubscribe request.</h1>
 
 </div>
@@ -539,7 +539,7 @@ Table of SUBACK return codes</h1>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md209"></a>
+<h1><a class="anchor" id="autotoc_md212"></a>
 @param String Event message.</h1>
 
 </div>
@@ -585,7 +585,7 @@ Table of SUBACK return codes</h1>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md208"></a>
+<h1><a class="anchor" id="autotoc_md211"></a>
 @param char* Message to publish.</h1>
 
 </div>

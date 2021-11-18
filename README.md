@@ -18,10 +18,12 @@
 ## Overview
 This repository contains Arduino code that is the firmware for the Zippy robot. 
 Zippy is a two wheeled platform that uses an inverted pendulumn balancing model 
-and closed loop DCdrive motors.
+and closed loop DC drive motors.
 
-```Note that this repository involves both hardware and software. The software 
-on its own is oflimited utility.```
+```
+Note that this repository involves both hardware and software. The software 
+on its own is of limited utility.
+```
 
 ## Features
 

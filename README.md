@@ -2,7 +2,7 @@
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
 [![Doxygen Action](https://github.com/theAgingApprentice/aaChip/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/theAgingApprentice/aaChip/actions/workflows/main.yml)
 
-# icUnderware - Robot projects start here!
+# Zippy two-wheeled balancing robot.
 
 ## Table of contents
 * [Overview](#Overview)
@@ -16,17 +16,25 @@
 * [Acknowledgements](#Acknowledgements)
 
 ## Overview
-This repository contains Arduino code that will get you off to a flying start 
-when you begin your next robot project. Simply clone this template repository 
-and use the source code to boot strap the development of your robot's 
-integrated circuit firmware. 
+This repository contains Arduino code that is the firmware for the Zippy robot. 
+Zippy is a two wheeled platform that uses an inverted pendulumn balancing model 
+and closed loop DCdrive motors.
+
+```Note that this repository involves both hardware and software. The software 
+on its own is oflimited utility.```
 
 ## Features
 
-* Modular code for easy maintenance
-* Hardware aware for easy configuration
-* Supports typical subsystems found in robot projects   
-* Repo auto generates online documentation
+* Inverse kinematic algorithms. 
+* Modular code architecture for easy maintenance.
+* Hardware aware for easy configuration.
+* DC drive motors for high torque and responsiveness.
+* Closed loop encoded motors for precise conytrol.
+* WiFi capable.
+* Web interface for live configuration management.
+* MQTT compatable for remote monitoring and control.
+* OTA support for in the field firmware updates.
+* Repo auto generates online documentation.
 * MIT License
 
 ## Compatability 

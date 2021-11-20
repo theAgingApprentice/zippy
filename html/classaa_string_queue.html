@@ -134,7 +134,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_numCmdsBuffered</b
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md302"></a>
+<h1><a class="anchor" id="autotoc_md315"></a>
 @class Provide a FIFO queue for Strings.</h1>
 
 </div>
@@ -164,7 +164,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_numCmdsBuffered</b
 </div><div class="memdoc">
 
 <p>Shift command buffer rows down. </p>
-<h1><a class="anchor" id="autotoc_md309"></a>
+<h1><a class="anchor" id="autotoc_md322"></a>
 @details Move each row of command buffer down leaving the top row empty.</h1>
 
 </div>
@@ -183,7 +183,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_numCmdsBuffered</b
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md310"></a>
+<h1><a class="anchor" id="autotoc_md323"></a>
 @brief Sends the content of the buffer to the console.</h1>
 
 </div>
@@ -205,7 +205,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_numCmdsBuffered</b
 
 <p>Clears the command queue. </p>
 <p >Actually leaves the values in memory but chnages the counter so </p>
-<h1><a class="anchor" id="autotoc_md308"></a>
+<h1><a class="anchor" id="autotoc_md321"></a>
 all slots are treated as empty.</h1>
 
 </div>
@@ -226,7 +226,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports the number of commands currently in the queue. </p>
-<h1><a class="anchor" id="autotoc_md306"></a>
+<h1><a class="anchor" id="autotoc_md319"></a>
 @return int8_t reports value of the _numCmdsBuffered variable.</h1>
 
 </div>
@@ -248,7 +248,7 @@ all slots are treated as empty.</h1>
 
 <p>Reports the number of commands that were discarded. </p>
 <p >When the command buffer is full the oldest message is discarded to make room for a newer message. </p>
-<h1><a class="anchor" id="autotoc_md307"></a>
+<h1><a class="anchor" id="autotoc_md320"></a>
 @return int8_t reports value of the _numCmdsLost variable.</h1>
 
 </div>
@@ -269,7 +269,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports the maximum size of the queue. </p>
-<h1><a class="anchor" id="autotoc_md305"></a>
+<h1><a class="anchor" id="autotoc_md318"></a>
 @return int8_t reports value of BUFFER_MAX_SIZE constant.</h1>
 
 </div>
@@ -290,7 +290,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports if the command queue is empty or not. </p>
-<h1><a class="anchor" id="autotoc_md303"></a>
+<h1><a class="anchor" id="autotoc_md316"></a>
 @return bool true = it is empty, false = there is at least 1 entry in queue.</h1>
 
 </div>
@@ -311,7 +311,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports if the command queue is full or not. </p>
-<h1><a class="anchor" id="autotoc_md304"></a>
+<h1><a class="anchor" id="autotoc_md317"></a>
 @return bool true = it is full, false = there is still room in the queue.</h1>
 
 </div>
@@ -335,7 +335,7 @@ all slots are treated as empty.</h1>
 <p>Puts oldest content from the the buffer into the specified char array. </p>
 <p >Return the oldest command in the buffer. The variable _numCmdsBuffered is used to track the number of buffered command left. Note that the buffer index starts at 0 so we must subtract one from the index pointer to point at the corresponding slot. This means that subtracting one from the index counter first both points at the right slot and et the total number of buffered commands correctly when we are popping one off the stack. <br  />
  </p>
-<h1><a class="anchor" id="autotoc_md312"></a>
+<h1><a class="anchor" id="autotoc_md325"></a>
 @param char* A pointer to the character array where the buffer command is placed.</h1>
 
 </div>
@@ -358,7 +358,7 @@ all slots are treated as empty.</h1>
 
 <p>Adds a new command to the top of the queue. </p>
 <p >Shift all previous commands done in the queue and add thhe newest command to the top. If the queue is full then the bottom item (the odest one) gets dropped and is never processed. The variable _numCmdsLost is used as a counter tracks this </p>
-<h1><a class="anchor" id="autotoc_md311"></a>
+<h1><a class="anchor" id="autotoc_md324"></a>
 loss.</h1>
 
 </div>

@@ -211,7 +211,12 @@ bool processCmd(String payload)
          x = mqtt.publishMQTT(helpTopicTree, "SET_MOT_DIR,motor number (0 = left, 1 = right), direction (0 = stop, 1 = Forward, 2 = backward).");
          delay(1);
       } //while 
-      //SET_MOT_DIR  
+      x = false;
+      while(x == false)
+      {
+         x = mqtt.publishMQTT(helpTopicTree, "RESET_MOT_CNT.");
+         delay(1);
+      } //while  
       Log.noticeln("<processCmd> List of valid MQTT commands sent to MQTT broker."); 
       return true;
    }  // if 
@@ -292,6 +297,31 @@ bool processCmd(String payload)
          return false;
       } // else
    } // if      
+   // RESET_MOT_CNT command.
+   if(cmd == "RESET_MOT_CNT")
+   {
+      const int8_t numArgumentsRequired = 0; // How many arguments expected?
+      if(checkNumArg(numArgumentsRequired, argN, &arg[0]))
+      {
+         Log.verboseln("<processCmd> Resetting both motor counters."); 
+         M0TestCnt = 0;
+         m0CurrCnt = 0; // Used by ISR.
+         m0LastCnt = 0; // Used by main loop.
+         m0CurrMillis = 0; // Used to calculate speed.
+         m0LastMillis = 0; // Used to calcullate speed.
+         m1TestCnt = 0;
+         m1CurrCnt = 0; // Used by ISR.
+         m1LastCnt = 0; // Used by main loop.
+         m1CurrMillis = 0; // Used to calculate speed.
+         m1LastMillis = 0; // Used to calculate speed.
+         return true;
+      } // if
+      else
+      {
+         Log.verboseln("<processCmd> Reset command error. Ignoring request."); 
+         return false;
+      } // else
+   } // if         
    Log.warningln("<processCmd> Warning - unrecognized command."); 
    return false;
 } // processCmd()

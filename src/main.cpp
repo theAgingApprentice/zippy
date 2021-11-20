@@ -82,4 +82,5 @@ void loop()
    checkLimitSwitches(); // Make update to status LED on reset button.
    monitorWebServer(); // Handle any pending web client requests. 
    checkMqtt(); // Check the MQTT message queue for incoming commands.
+   checkMotorEncoders(); // Check what the motor encoders are up to.
 } // loop()  

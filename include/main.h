@@ -64,8 +64,8 @@ const uint8_t PWM_RESOLUTION = 8; // ESP32 can go up to 8 bit PWM resolution.
 #define PWM_BLUE_CHANNEL 2 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 2 for RGB blue.
 #define PWM_MOT1_CHANNEL 3 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 3 for motor 1 speed.  
 #define PWM_MOT2_CHANNEL 4 // ESP32 has 16 channels which can generate 16 independent waveforms. Use 4 for motor 2 speed.  
-const uint8_t LEFT_MOTOR = 0; // Refer to left motor.
-const uint8_t RIGHT_MOTOR = 1; // Refer to right motor.
+const uint8_t MOTOR_0 = 0; // Refer to motor 0 (left?).
+const uint8_t MOTOR_1 = 1; // Refer to motor 1 (right?).
 typedef struct
 {
    String name; // Name associated with colour properties
@@ -75,11 +75,6 @@ typedef struct
 }struct_Colour; 
 struct_Colour statusColour[numColoursSupported]; // Array of colours.
 struct_Colour memColour; // Used to switch back RGB LED colour when it is temporarily changed.
-// DAE Inverted kinematic related variables.
-const uint8_t footLen = 11; // Distance from ankle to toe (foot) is 11cm. 
-const uint8_t shinLen = 7.5; // Distance from knee to ankle (shin) is 7.5cm.
-const uint8_t toeOffset = 17; // Angle that toe is offset from 90deg of ankle joint is 17 degrees.
-const uint8_t origXOffset = 2.92; // Distance the knee is offset from the origin along the x axis.
 // I2C related variables.
 #define I2C_BUS0_SPEED 400000 // Define speed of I2C bus 2. Note 400KHz is the upper speed limit for ESP32 I2C
 #define MPU6050_I2C_ADD 0x68 // GY521 I2C address.
@@ -87,12 +82,29 @@ const uint8_t origXOffset = 2.92; // Distance the knee is offset from the origin
 #define rightOLED_I2C_ADD 0x3C // OLED used for robot' right eye I2C address.
 #define dcMotorController 0xB0 >> 1 // Wire Library only uses 7 bit addresses so you need to shift address one bit to the right.
 #define LCD16x2 0x3F // Liquid Crystal Display.
-// Define terminal related variables.
+// Terminal related variables.
 unsigned long serialBaudRate = 115200; // Serial terminal baud rate.
-// Define local web server related variables.
+// Local web server related variables.
 bool isWebServer; // True is web server running.
 const char* WEB_APP_TITLE = "Zippy"; // App name for web page titles.
 aaWebService localWebService(WEB_APP_TITLE); // Webserver hosted by microcontroller.
+// Drive motor related variables.
+long M0TestCnt = 0;
+long m0CurrCnt = 0; // Used by ISR.
+long m0LastCnt = 0; // Used by main loop.
+long m0CurrMillis = 0; // Used to calculate speed.
+long m0LastMillis = 0; // Used to calcullate speed.
+bool m0Dir; // Track direction left motor shaft is rotating.
+long m1TestCnt = 0;
+long m1CurrCnt = 0; // Used by ISR.
+long m1LastCnt = 0; // Used by main loop.
+long m1CurrMillis = 0; // Used to calculate speed.
+long m1LastMillis = 0; // Used to calculate speed.
+bool m1Dir; // Track direction right motor shaft is rotating.
+const bool mtrFwd = true; // Constant for forward rotation.
+const bool mtrBwd = false; // Constant for backward rotation.
+// ISR related variables
+portMUX_TYPE motorEncoderMutex = portMUX_INITIALIZER_UNLOCKED; // Spinlock mutex.
 
 /************************************************************************************
  * @section funcDeclare Declare functions found in the include files.
@@ -143,6 +155,11 @@ void placeTextHcentre(String, int8_t);
 void setupMotCntl();
 bool setMotorSpeed(uint8_t, uint32_t); 
 bool setMotorDirection(uint8_t, uint8_t);
+void IRAM_ATTR isrMot0EncA();
+void IRAM_ATTR isrMot0EncB();
+void IRAM_ATTR isrMot1EncA();
+void IRAM_ATTR isrMot1EncB();
+void checkMotorEncoders();
 
 /*******************************************************************************
  * @section codeModules Functions put into files according to function.

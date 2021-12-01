@@ -66,9 +66,9 @@
 // Physical pin 4 is labeled GND
 const int8_t PIN_5_LBL_A0 = 26; // Physical pin 5. Input and output.
 const int8_t PIN_6_LBL_A1 = 25; // Physical pin 6. Input and output.
-const int8_t PIN_7_LBL_A2 = 34; // Physical pin 7. Input only.
-const int8_t PIN_8_LBL_A3 = 39; // Physical pin 8. Input only.
-const int8_t PIN_9_LBL_A4 = 36; // Physical pin 9. Input only.
+const int8_t PIN_7_LBL_A2 = 34; // Physical pin 7. Input only. No pullup/down resistor.
+const int8_t PIN_8_LBL_A3 = 39; // Physical pin 8. Input only. No pullup/down resistor.
+const int8_t PIN_9_LBL_A4 = 36; // Physical pin 9. Input only. No pullup/down resistor.
 const int8_t PIN_10_LBL_A5 = 4; // Physical pin 10. Input and output.
 const int8_t PIN_11_LBL_SCK = 5; // Physical pin 11. Output only.
 const int8_t PIN_12_LBL_MO = 18; // Physical pin 12. Output only.
@@ -86,7 +86,7 @@ const int8_t PIN_20_LBL_32 = 32; // Physical pin 20. Input and output.
 const int8_t PIN_21_LBL_15 = 15; // Physical pin 21. Input and output.
 const int8_t PIN_22_LBL_33 = 33; // Physical pin 22. Input and output.
 const int8_t PIN_23_LBL_27 = 27; // Physical pin 23. Input and output.
-const int8_t PIN_24_LBL_12 = 12; // Physical pin 24. Output only.
+const int8_t PIN_24_LBL_12 = 12; // Physical py l in 24. Output only.
 const int8_t PIN_25_LBL_13 = 13; // Physical pin 25. Input and output.
 // Physical pin 26 is labeled USB
 // Physical pin 27 is labeled EN

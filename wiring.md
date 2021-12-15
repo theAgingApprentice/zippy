@@ -1,3 +1,5 @@
+[return to main page](https://github.com/theAgingApprentice/zippy/blob/main/README.md)
+
 # Circuit components
 
 The Zippy prototype is made up of the following hardware components:
@@ -249,3 +251,5 @@ The header wiring found on protobard 2 (shown in figure 2) is detailed in the ta
     <td>5 VDC power to Huzzah32 USB port.</td>
   </tr>
 </table>
+
+[return to main page](https://github.com/theAgingApprentice/zippy/blob/main/README.md)

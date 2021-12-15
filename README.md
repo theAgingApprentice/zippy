@@ -10,6 +10,7 @@
 * [Compatability](#Compatability)
 * [Development environment](#Development-environment)
 * [Code documentation](#Code-documentation)
+* [Circuit documentation](#Circuit-documentation)
 * [Downloading](#Downloading)
 * [Testing](#Testing)
 * [Releases](#Releases)
@@ -61,6 +62,8 @@ This repository automatcally generates
 [online documentation](https://theagingapprentice.github.io/zippy/html/index.html) 
 each time code is merged into the main branch.
 
+## Circuit documentation
+Details about Zippy's circuit wiring can be found [here](./docs/wiring.md).
 ## Downloading
 Detailed instructions on how to use this template repository can bew viewed [here](./aaAdmin/newRepoTodo.md).
 

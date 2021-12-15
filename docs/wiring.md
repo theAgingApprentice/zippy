@@ -66,7 +66,7 @@ Zippy's processor circuit is made upp of:
 
 # Circuit wiring
 
-The prototype zippy robot does not  have a PCB but rther is a collection of development boards and wiring harnesses. The main baords of the circuit are 
+The prototype zippy robot does not have a PCB but rather is a collection of development boards and wiring harnesses. The main boards of the circuit are: 
 
 1. Protoboard 1.
 2. Protoboard 2.
@@ -74,14 +74,14 @@ The prototype zippy robot does not  have a PCB but rther is a collection of deve
 4. Huzzah32 with screw terminal breakout board.
 5. An NWDZ V2.0 power board.
 
-The two protoboards act as the wiring hub for everythng so how the circuit is wired up is best understood by detailing the wiring connetions to those boards.
+The two protoboards act as the wiring hub for everything so how the circuit is wired up is best understood by detailing the wiring connetions to those boards.
 
 ## Protoboard 1
 
 The header wiring found on protobard 1 (shown in figure 1) is detailed in the table below.
 
 <figure>
- <img src="./zippyPCB1.png" alt="Protoboard1">
+ <img src="https://github.com/theAgingApprentice/zippy/blob/main/img/zippyPCB1.png" alt="Protoboard1">
  <figcaption>Figure 1: Zippy protoboard 1.</figcaption>
 </figure>
 
@@ -183,7 +183,7 @@ The header wiring found on protobard 1 (shown in figure 1) is detailed in the ta
 The header wiring found on protobard 2 (shown in figure 2) is detailed in the table below.
 
 <figure>
- <img src="./zippyPCB2.png" alt="Protoboard2">
+ <img src="https://github.com/theAgingApprentice/zippy/blob/main/img/zippyPCB2.png" alt="Protoboard2">
  <figcaption>Figure 2: Zippy protoboard 2.</figcaption>
 </figure>
 

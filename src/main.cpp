@@ -61,6 +61,8 @@ void setup()
    setupLimitSwitches(); // Configure limit switches.
    Log.verboseln("<setup> Set up wifi connection."); 
    setupNetwork();
+//   Log.verboseln("<setup> Set up bluetooth.");    
+//   initBluetooth(); // Initialize Bluetooth radio.
    Log.traceln("<setup> Initialize DC motors.");
    setupMotCntl();
    Log.verboseln("<setup> Display robot configuration in console trace."); 

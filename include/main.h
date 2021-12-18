@@ -21,6 +21,8 @@
 #include <zippy_gpio_pins.h> // GPIO pin uses
 #include <SPI.h> 
 #include <LiquidCrystal_I2C.h> // https://github.com/tonykambo/LiquidCrystal_I2C
+#include "esp_bt_main.h" // Bluetooth support.
+#include "esp_bt_device.h" // Bluetooth support.
 
 /*******************************************************************************
  * @section mainVars Global variable definitions.

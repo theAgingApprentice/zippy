@@ -14,14 +14,14 @@
  * file included above.
  ******************************************************************************/
 const int8_t G_MOT0_ENA = PIN_10_LBL_A5; // PWM speed of motor 0. Physical pin 10.
-const int8_t G_MOT0_ENCA = PIN_7_LBL_A2; // Motor 0 hall effect A. Physical pin 7.
-const int8_t G_MOT0_ENCB = PIN_20_LBL_32; // Motor 0 hall effect B. Physical pin 20.
+const int8_t G_MOT0_ENCA = PIN_6_LBL_A1; // Motor 0 hall effect A. Physical pin 20.
+const int8_t G_MOT0_ENCB = PIN_5_LBL_A0; // Motor 0 hall effect B. Physical pin 7.
 const int8_t G_MOT0_DIR0 = PIN_24_LBL_12; // Direction of motor 0. Physical pin 24. MTDI boot strap pin. Do not pull high at boot but can pull low at boot (10K resistor).
 const int8_t G_MOT0_DIR1 = PIN_25_LBL_13; // Direction of motor 0. Physical pin 25.
 
 const int8_t G_MOT1_ENA = PIN_11_LBL_SCK; // PWM speed of motor 1. Physical pin 11.
-const int8_t G_MOT1_ENCA = PIN_5_LBL_A0; // Motor 1 hall effect A. Physical pin 5.
-const int8_t G_MOT1_ENCB = PIN_6_LBL_A1; // Motor 1 hall effect B. Physical pin 6.
+const int8_t G_MOT1_ENCA = PIN_7_LBL_A2; // Motor 1 hall effect A. Physical pin 5.
+const int8_t G_MOT1_ENCB = PIN_20_LBL_32; // Motor 1 hall effect B. Physical pin 6.
 const int8_t G_MOT1_DIR0 = PIN_17_LBL_SDA; // Direction of motor 1. Physical pin 17.
 const int8_t G_MOT1_DIR1 = PIN_18_LBL_SCL; // Direction of motor 1. Physical pin 18.
 
